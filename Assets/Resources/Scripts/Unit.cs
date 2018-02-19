@@ -1,0 +1,162 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Unit : MonoBehaviour {
+
+    public Offense fireball1;
+    public Offense fireball2;
+    public Offense fireball3;
+
+    public Defense shield1;
+    public Defense shield2;
+    public Defense shield3;
+
+    public Transform fireballLocation;
+    public Transform shieldLocation;
+    public Direction facing;
+
+    public int maxHp;
+    public int maxMp;
+    [SerializeField]
+    private float hp;
+    [SerializeField]
+    private float mp;
+    public float hpRegenRate =0;
+    public float mpRegenRate;
+
+    public float maxSp = 10;
+    public float sp =10;
+    public VitalsUI vitalsUI;
+
+    public bool usingShield; //not sure if necessary. Currently is being used in code, but that itself may not be necessary
+    public bool canUseShield=true;
+    public float shieldOverpoweredCooldownTime = 0.1f; //cooldown time when an offense is higher than your shield
+    public float shieldBreakCooldownTime = 1f; //cooldown time for when you can use shield again when shield is broken
+    public Defense currentShield; 
+
+	// Use this for initialization
+	void Start () {
+        hp = maxHp;
+        mp = maxMp;
+        setFireballFacing();
+        vitalsUI.InitializeVitals(maxHp, maxMp);
+	}
+	
+    public void setFireballFacing(){
+        fireball1.GetComponent<Mover>().direction = facing;
+        fireball2.GetComponent<Mover>().direction = facing;
+        fireball3.GetComponent<Mover>().direction = facing;
+    }
+
+    public void shootFireball(int number){
+        Offense fireball = null;
+        switch(number){
+            case 1:
+                fireball = fireball1;
+                break;
+            case 2:
+                fireball = fireball2;
+                break;
+            case 3:
+                fireball = fireball3;
+                break;
+            default:
+                Debug.LogError("Invalid number for fireball. Must be an integer between 1 and 3.");
+                break;
+        }
+        if(fireball!=null && fireball.numberValue <= mp){
+            Instantiate(fireball.gameObject,fireballLocation.position,fireballLocation.rotation);
+            addMP(-fireball.numberValue);
+        }
+    }
+
+    //Put a negative value to remove
+    public void addMP(float val){
+        mp = Mathf.Clamp(mp+val,0,maxMp);
+        print(mp);
+        if(vitalsUI != null){
+            vitalsUI.UpdateVitals(VitalName.MP,mp,maxMp);
+        }
+        else{
+            Debug.Log("There is no UI element for this Unit and its vital update. Please check if this was intentional");
+        }
+        if(mp <= 0.1 & usingShield){
+            stopShield();
+        }
+    }
+
+    //Put a negative value to remove
+    public void addHP(float val)
+    {
+        hp = Mathf.Clamp(hp + val, 0, maxHp);
+        if(vitalsUI!=null){
+            vitalsUI.UpdateVitals(VitalName.HP, hp, maxHp);
+        }
+        else{
+            Debug.Log("There is no UI element for this Unit and its vital update. Please check if this was intentional");
+        }
+    }
+
+    //This is called once button is pressed
+    public void startShield(int number){
+        //If a shield already exists, destroy that one, and then create a new one
+        if(usingShield){
+            stopShield();
+        }
+        Defense shield = null;
+        switch (number)
+        {
+            case 1:
+                shield = shield1;
+                break;
+            case 2:
+                shield = shield2;
+                break;
+            case 3:
+                shield = shield3;
+                break;
+            default:
+                Debug.LogError("Invalid number for shield. Must be an integer between 1 and 3.");
+                break;
+        }
+        usingShield = true;
+        if (shield != null && shield.numberValue <= mp)
+        {
+            Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation);
+            //addMP(-shield.numberValue);
+            //Don't substract MP here, simply create the shield, and then the shield object
+            //will deal with constantly draining your MP. The shield will also call stopShield
+            //once you run out MP
+        }
+    }
+    //This is called once button is released
+    public void stopShield()
+    {
+        usingShield = false;
+        currentShield = null;
+    }
+
+    public void shieldOverpowered()
+    {
+        canUseShield = false;
+        //Instantiate shield overpowered particle effect.
+        Invoke("makeShieldUsable",shieldOverpoweredCooldownTime);
+    }
+    public void shieldBroken()
+    {
+        canUseShield = false;
+        //Instantiate shield break particle effect which should be more dramatic than overpowered.
+        Invoke("makeShieldUsable", shieldBreakCooldownTime);
+    }
+    public void makeShieldUsable()
+    {
+        canUseShield = true;
+    }
+
+	// Update is called once per frame
+	void Update () {
+        //Don't need to update vitals here, because addMP already takes care of that       
+        addMP(mpRegenRate*Time.deltaTime);
+	}
+}
