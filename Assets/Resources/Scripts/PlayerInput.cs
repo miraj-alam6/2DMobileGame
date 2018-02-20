@@ -29,17 +29,29 @@ public class PlayerInput : MonoBehaviour {
     {
         playerUnit.shootFireball(3);
     }
-    public void shieldButton1()
+    public void shieldButton1Press()
     {
-
+        playerUnit.startShield(1);
     }
-    public void shieldButton2()
+    public void shieldButton2Press()
     {
-
+        playerUnit.startShield(2);
     }
-    public void shieldButton3()
+    public void shieldButton3Press()
     {
-
+        playerUnit.startShield(3);
+    }
+    public void shieldButton1Release()
+    {
+        playerUnit.stopShield();
+    }
+    public void shieldButton2Release()
+    {
+        playerUnit.stopShield();
+    }
+    public void shieldButton3Release()
+    {
+        playerUnit.stopShield();
     }
 
 }

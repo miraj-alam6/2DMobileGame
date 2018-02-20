@@ -31,9 +31,11 @@ public class Unit : MonoBehaviour {
 
     public bool usingShield; //not sure if necessary. Currently is being used in code, but that itself may not be necessary
     public bool canUseShield=true;
+    public float shieldGeneralCooldownTime = 0.1f; //Cooldown time when you run out of MP or when you let go of one shield 
     public float shieldOverpoweredCooldownTime = 0.1f; //cooldown time when an offense is higher than your shield
     public float shieldBreakCooldownTime = 1f; //cooldown time for when you can use shield again when shield is broken
-    public Defense currentShield; 
+    public Defense currentShield;
+    public TurnType currentTurnType = TurnType.Attack;
 
 	// Use this for initialization
 	void Start () {
@@ -100,52 +102,65 @@ public class Unit : MonoBehaviour {
 
     //This is called once button is pressed
     public void startShield(int number){
-        //If a shield already exists, destroy that one, and then create a new one
-        if(usingShield){
-            stopShield();
-        }
-        Defense shield = null;
-        switch (number)
-        {
-            case 1:
-                shield = shield1;
-                break;
-            case 2:
-                shield = shield2;
-                break;
-            case 3:
-                shield = shield3;
-                break;
-            default:
-                Debug.LogError("Invalid number for shield. Must be an integer between 1 and 3.");
-                break;
-        }
-        usingShield = true;
-        if (shield != null && shield.numberValue <= mp)
-        {
-            Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation);
-            //addMP(-shield.numberValue);
-            //Don't substract MP here, simply create the shield, and then the shield object
-            //will deal with constantly draining your MP. The shield will also call stopShield
-            //once you run out MP
+        if(currentTurnType == TurnType.Defense){ //Just as a precaution. This check is not required to have
+            //If a shield already exists, destroy that one, and then create a new one
+            if(usingShield){
+                stopShield();
+            }
+            Defense shield = null;
+            switch (number)
+            {
+                case 1:
+                    shield = shield1;
+                    break;
+                case 2:
+                    shield = shield2;
+                    break;
+                case 3:
+                    shield = shield3;
+                    break;
+                default:
+                    Debug.LogError("Invalid number for shield. Must be an integer between 1 and 3.");
+                    break;
+            }
+            usingShield = true;
+            if (shield != null && shield.numberValue <= mp)
+            {
+                currentShield = (Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
+                //addMP(-shield.numberValue);
+                //Don't substract MP here, simply create the shield, and then the shield object
+                //will deal with constantly draining your MP. The shield will also call stopShield
+                //once you run out MP
+            }
         }
     }
-    //This is called once button is released
-    public void stopShield()
+    //General code used in all methods that destroy shield
+    public void removeShield()
     {
         usingShield = false;
+        if(currentShield){
+            currentShield.destroySelf();
+        }
         currentShield = null;
+    }
+    //This is called once button is released or if you run out of MP, or when your defense turn ends, since
+    //the player may theoretically still be holding the button down even after turn ends.
+    public void stopShield()
+    {
+        removeShield();
+        //Shield fading animation or something.
+        Invoke("makeShieldUsable", shieldGeneralCooldownTime);
     }
 
     public void shieldOverpowered()
     {
-        canUseShield = false;
+        removeShield();
         //Instantiate shield overpowered particle effect.
         Invoke("makeShieldUsable",shieldOverpoweredCooldownTime);
     }
     public void shieldBroken()
     {
-        canUseShield = false;
+        removeShield();
         //Instantiate shield break particle effect which should be more dramatic than overpowered.
         Invoke("makeShieldUsable", shieldBreakCooldownTime);
     }

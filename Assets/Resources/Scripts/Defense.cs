@@ -22,6 +22,10 @@ public class Defense : MonoBehaviour {
         this.drainRate = drainRate;
         this.numberTimesDrain = numberValue * drainRate;
     }
+    public void destroySelf(){
+        Destroy(this.gameObject);
+    }
+
 	// Update is called once per frame
 	void Update () {
         if(unit){
