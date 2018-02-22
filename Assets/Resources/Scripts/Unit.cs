@@ -37,6 +37,7 @@ public class Unit : MonoBehaviour {
     public Defense currentShield;
     public TurnType currentTurnType = TurnType.Attack;
 
+    public float currentDrainRate = 0.5f;
 	// Use this for initialization
 	void Start () {
         hp = maxHp;
@@ -127,9 +128,10 @@ public class Unit : MonoBehaviour {
             if (shield != null && shield.numberValue <= mp)
             {
                 currentShield = (Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
-                //addMP(-shield.numberValue);
-                //Don't substract MP here, simply create the shield, and then the shield object
-                //will deal with constantly draining your MP. The shield will also call stopShield
+                currentShield.Initialize(this);
+                addMP(-shield.numberValue);
+                // Substracting MP here isn't enough. After creating the shield object,
+                //it  will deal with constantly draining your MP. The shield will also call stopShield
                 //once you run out MP
             }
         }

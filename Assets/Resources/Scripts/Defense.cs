@@ -7,7 +7,7 @@ public class Defense : MonoBehaviour {
 
     public int numberValue; //1,2, or 3
     public float drainRate =0.5f;
-    private float numberTimesDrain;
+   // private float numberTimesDrain;
     public Unit unit;
 	// Use this for initialization
 	void Start () {
@@ -15,12 +15,13 @@ public class Defense : MonoBehaviour {
 	}
 	
 
-    //Don't need to pass in numberValue, because that is already existing from
-    //the prefab.
-    public void Initialize(int drainRate, Unit unit){
+    //Unit will call this so that defense no it exists.
+    //This also calculate numberValue * drainRate and stores the value.
+    public void Initialize(Unit unit){
         this.unit = unit;
-        this.drainRate = drainRate;
-        this.numberTimesDrain = numberValue * drainRate;
+        //this.drainRate = drainRate;
+        //this.numberTimesDrain = numberValue * drainRate; //no point to doing it like this. Just
+        //make drainRate its own thing independent of numberValue
     }
     public void destroySelf(){
         Destroy(this.gameObject);
@@ -29,7 +30,8 @@ public class Defense : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(unit){
-            unit.addMP(-(numberTimesDrain *Time.deltaTime));
+            print("got here");
+            unit.addMP(-(drainRate *Time.deltaTime));
         }
 	}
 }
