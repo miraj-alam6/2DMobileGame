@@ -4,4 +4,5 @@ using UnityEngine;
 
 public class TagNames {
     public static string Fireball = "Fireball";
+    public static string FireballSprite = "FireballSprite";
 }

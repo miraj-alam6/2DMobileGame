@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour {
 
+    private int unitID = 0;
     public Offense fireball1;
     public Offense fireball2;
     public Offense fireball3;
@@ -37,19 +38,35 @@ public class Unit : MonoBehaviour {
     public Defense currentShield;
     public TurnType currentTurnType = TurnType.Attack;
 
+
+    private Offense collidedFireball;
+    private bool _spawning = false;
+
+    public bool spawning{
+        get{ 
+            return _spawning; 
+        }
+        //set{
+        //    _spawning = value; 
+        //}
+
+    }
+
     public float currentDrainRate = 0.5f;
 	// Use this for initialization
 	void Start () {
+        unitID = GameplayController.instance.GetNextUnitID();
         hp = maxHp;
         mp = maxMp;
-        setFireballFacing();
         vitalsUI.InitializeVitals(maxHp, maxMp);
 	}
 	
-    public void setFireballFacing(){
-        fireball1.GetComponent<Mover>().direction = facing;
-        fireball2.GetComponent<Mover>().direction = facing;
-        fireball3.GetComponent<Mover>().direction = facing;
+    //This sets the direction the fireball will move as well as its ID
+    public void InitFireballProperties(Offense fireball){
+        
+        fireball.GetComponent<Mover>().direction = facing;
+        fireball.GetComponent<Mover>().InitDirection();
+        fireball.unitID = unitID;
     }
 
     public void shootFireball(int number){
@@ -69,7 +86,10 @@ public class Unit : MonoBehaviour {
                 break;
         }
         if(fireball!=null && fireball.numberValue <= mp){
-            Instantiate(fireball.gameObject,fireballLocation.position,fireballLocation.rotation);
+            GameObject obj = (GameObject)Instantiate(fireball.gameObject,fireballLocation.position,fireballLocation.rotation);
+            //obj.GetComponent<Offense>().unitID = unitID;
+            InitFireballProperties(obj.GetComponent<Offense>());
+
             addMP(-fireball.numberValue);
         }
     }
@@ -77,7 +97,7 @@ public class Unit : MonoBehaviour {
     //Put a negative value to remove
     public void addMP(float val){
         mp = Mathf.Clamp(mp+val,0,maxMp);
-        print(mp);
+//        print(mp);
         if(vitalsUI != null){
             vitalsUI.UpdateVitals(VitalName.MP,mp,maxMp);
         }
@@ -95,6 +115,9 @@ public class Unit : MonoBehaviour {
         hp = Mathf.Clamp(hp + val, 0, maxHp);
         if(vitalsUI!=null){
             vitalsUI.UpdateVitals(VitalName.HP, hp, maxHp);
+            if(hp <=0){
+                Die();
+            }
         }
         else{
             Debug.Log("There is no UI element for this Unit and its vital update. Please check if this was intentional");
@@ -171,9 +194,32 @@ public class Unit : MonoBehaviour {
         canUseShield = true;
     }
 
+    public int GetUnitID(){
+        return unitID;
+    }
+
+    public void Die(){
+        //TODO: Need to do more. Have to check if this is main player, probably with checking player
+        //tag is easiest way
+        Destroy(this.gameObject, 0.2f);
+    }
+
+
 	// Update is called once per frame
 	void Update () {
         //Don't need to update vitals here, because addMP already takes care of that       
         addMP(mpRegenRate*Time.deltaTime);
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag(TagNames.Fireball)){
+            collidedFireball = collision.GetComponent<Offense>();
+            if(collidedFireball 
+               && collidedFireball.unitID != unitID
+              ){
+                addHP(-collidedFireball.damage);
+            }
+        }
+    }
 }

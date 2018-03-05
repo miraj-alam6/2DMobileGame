@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 50826369505079324}
   - component: {fileID: 212727865294984684}
   m_Layer: 0
-  m_Name: Fireball2
+  m_Name: EnemyFireball2
   m_TagString: Fireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 1240256507979886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4351018655368280}
   m_RootOrder: 0
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1315539811893162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.2, y: 0.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4010450799040100}
@@ -107,7 +107,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -118,7 +118,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.12}
+  m_Size: {x: 0.42, y: 0.33}
   m_EdgeRadius: 0
 --- !u!95 &95404950173326454
 Animator:
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  direction: 3
+  direction: 2
   rb2D: {fileID: 0}
 --- !u!114 &114863074894133694
 MonoBehaviour:
@@ -163,7 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberValue: 2
-  damage: 1
+  damage: 2
+  _unitID: 0
 --- !u!212 &212072752738931124
 SpriteRenderer:
   m_ObjectHideFlags: 1

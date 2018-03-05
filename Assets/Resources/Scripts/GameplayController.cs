@@ -11,10 +11,26 @@ public class GameplayController : MonoBehaviour {
     public RectTransform timeBarTransform;
     public CanvasGroup attackButtons;
     public CanvasGroup defenseButtons;
-
     private float maxTimeBarWidth;
-	// Use this for initialization
-	void Start () {
+    public static GameplayController instance = null;
+    private int lastUnitID=-1;
+    private List<Offense> currentFireballs;
+    public LevelController levelController;
+   
+
+
+    private void Awake(){
+        currentFireballs = new List<Offense>();
+        if(instance){
+            Destroy(this.gameObject);
+        }
+        else{
+            instance = this;
+        }
+    }
+    // Use this for initialization
+    void Start () {
+        
         if (player.currentTurnType == TurnType.Attack)
         {
             defenseButtons.alpha = 0;
@@ -41,8 +57,16 @@ public class GameplayController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(turnTimeLeft <= 0.01){
-            tempTurnSwitch(); 
+        if(turnTimeLeft <= 0.01 && currentFireballs.Count<=0){
+            if(player){
+                
+                if(currentEnemy && !currentEnemy.spawning){
+                    turnSwitch(); 
+                }
+                else{
+                    //TODO: Spawn the next enemy
+                }
+            }
         }
         else{
             reduceTime();
@@ -58,28 +82,78 @@ public class GameplayController : MonoBehaviour {
     }
     public void tempTurnSwitch(){
         turnTimeLeft = turnTime;
-        if(player.currentTurnType == TurnType.Defense){
-            player.currentTurnType = TurnType.Attack;
-            defenseButtons.alpha = 0;
-            defenseButtons.interactable = false;
-            defenseButtons.blocksRaycasts = false;
-            attackButtons.alpha = 1;
-            attackButtons.interactable = true;
-            attackButtons.blocksRaycasts = true;
-            player.stopShield();
-        }
-        else if(player.currentTurnType == TurnType.Attack){
-            player.currentTurnType = TurnType.Defense;
-            attackButtons.alpha = 0;
-            attackButtons.interactable = false;
-            attackButtons.blocksRaycasts = false;
-            defenseButtons.alpha = 1;
-            defenseButtons.interactable = true;
-            defenseButtons.blocksRaycasts = true;
+        if(player){
+            if(player.currentTurnType == TurnType.Defense){
+                player.currentTurnType = TurnType.Attack;
+                defenseButtons.alpha = 0;
+                defenseButtons.interactable = false;
+                defenseButtons.blocksRaycasts = false;
+                attackButtons.alpha = 1;
+                attackButtons.interactable = true;
+                attackButtons.blocksRaycasts = true;
+                player.stopShield();
+            }
+            else if(player.currentTurnType == TurnType.Attack){
+                player.currentTurnType = TurnType.Defense;
+                attackButtons.alpha = 0;
+                attackButtons.interactable = false;
+                attackButtons.blocksRaycasts = false;
+                defenseButtons.alpha = 1;
+                defenseButtons.interactable = true;
+                defenseButtons.blocksRaycasts = true;
 
+            }
+            else{
+                Debug.LogError("Invalid TurnType");
+            }
         }
-        else{
-            Debug.LogError("Invalid TurnType");
+    }
+    public void turnSwitch(){
+        turnTimeLeft = turnTime;
+        if(player){
+            if (player.currentTurnType == TurnType.Defense){
+                switchPlayerToAttack();  
+            }
+            else{
+                switchPlayerToDefense();
+            }
         }
+    }
+    public void switchPlayerToAttack(){
+        player.currentTurnType = TurnType.Attack;
+        defenseButtons.alpha = 0;
+        defenseButtons.interactable = false;
+        defenseButtons.blocksRaycasts = false;
+        attackButtons.alpha = 1;
+        attackButtons.interactable = true;
+        attackButtons.blocksRaycasts = true;
+        player.stopShield();
+       
+        currentEnemy.currentTurnType = TurnType.Defense;
+    }
+    public void switchPlayerToDefense(){
+        player.currentTurnType = TurnType.Defense;
+        attackButtons.alpha = 0;
+        attackButtons.interactable = false;
+        attackButtons.blocksRaycasts = false;
+        defenseButtons.alpha = 1;
+        defenseButtons.interactable = true;
+        defenseButtons.blocksRaycasts = true;
+        currentEnemy.currentTurnType = TurnType.Attack;
+
+    }
+    public int GetNextUnitID(){
+        return ++lastUnitID;
+    }
+
+    public void addFireball(Offense fireball)
+    {
+        currentFireballs.Add(fireball);
+    }
+
+    public void removeFireball(Offense fireball)
+    {
+        currentFireballs.Remove(fireball);
+        print("Fireballs left: "+currentFireballs.Count);
     }
 }
