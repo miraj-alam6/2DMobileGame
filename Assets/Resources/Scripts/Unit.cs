@@ -39,9 +39,10 @@ public class Unit : MonoBehaviour {
     public TurnType currentTurnType = TurnType.Attack;
 
 
+
     private Offense collidedFireball;
     private bool _spawning = false;
-
+    private bool _preventFireballs = false;
     public bool spawning{
         get{ 
             return _spawning; 
@@ -49,6 +50,18 @@ public class Unit : MonoBehaviour {
         //set{
         //    _spawning = value; 
         //}
+
+    }
+    public bool preventFireballs
+    {
+        get
+        {
+            return _preventFireballs;
+        }
+        set
+        {
+            _preventFireballs = value;
+        }
 
     }
 
@@ -70,6 +83,9 @@ public class Unit : MonoBehaviour {
     }
 
     public void shootFireball(int number){
+        if(preventFireballs){
+            return;
+        }
         Offense fireball = null;
         switch(number){
             case 1:
@@ -202,6 +218,7 @@ public class Unit : MonoBehaviour {
         //TODO: Need to do more. Have to check if this is main player, probably with checking player
         //tag is easiest way
         Destroy(this.gameObject, 0.2f);
+        removeShield();
     }
 
 

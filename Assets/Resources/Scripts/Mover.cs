@@ -23,11 +23,18 @@ public class Mover : MonoBehaviour {
         else if(direction == Direction.Left){
             rb2D.velocity = new Vector2(-speed, 0);
             Transform spriteTransform = Utility.GetChildByTag(transform, TagNames.FireballSprite);
-            spriteTransform.localScale =
-               new Vector3(-1 * 
-                           spriteTransform.localScale.x, 
-                           spriteTransform.localScale.y, 
-                           spriteTransform.localScale.z);
+            //spriteTransform.localScale = Vector3.Scale(transform.localScale, 
+            //                                           new Vector3(-1, 1, 1));  //this just sets the scale
+            ////doesn't multiply
+            //Multiplies one vector by another's corresponding. 
+            spriteTransform.localScale = 
+                Vector3.Scale(spriteTransform.localScale, new Vector3(-1, 1, 1));
+
+            //spriteTransform.localScale =
+                               //spriteTransform.localScale *  new Vector3(-1, 1, 1); 
+                           //spriteTransform.localScale.x, 
+                           //spriteTransform.localScale.y, 
+                           //spriteTransform.localScale.z);
         }
         else if(direction == Direction.Up){
             rb2D.velocity = new Vector2(0, speed);

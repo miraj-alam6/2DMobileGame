@@ -57,16 +57,22 @@ public class GameplayController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(turnTimeLeft <= 0.01 && currentFireballs.Count<=0){
-            if(player){
-                
-                if(currentEnemy && !currentEnemy.spawning){
-                    turnSwitch(); 
-                }
-                else{
-                    //TODO: Spawn the next enemy
+        if(turnTimeLeft <= 0.01){
+            if(currentFireballs.Count <= 0){
+                if(player){
+                    
+                    if(currentEnemy && !currentEnemy.spawning){
+                        turnSwitch(); 
+                    }
+                    else{
+                        //TODO: Spawn the next enemy
+                    }
                 }
             }
+            else{
+                stopFireballShooting();
+            }
+            
         }
         else{
             reduceTime();
@@ -108,14 +114,25 @@ public class GameplayController : MonoBehaviour {
             }
         }
     }
+    //Once turn timer is up, you want to stop fireballs, but let the other unit continue blocking.
+    public void stopFireballShooting(){
+        if(player && player.currentTurnType == TurnType.Attack){
+            player.preventFireballs = true;
+        }
+        else{
+            if(currentEnemy){
+                currentEnemy.preventFireballs = true;
+            }
+        }
+    }
     public void turnSwitch(){
         turnTimeLeft = turnTime;
         if(player){
-            if (player.currentTurnType == TurnType.Defense){
-                switchPlayerToAttack();  
+            if (player.currentTurnType == TurnType.Attack){
+                switchPlayerToDefense(); 
             }
             else{
-                switchPlayerToDefense();
+                switchPlayerToAttack();
             }
         }
     }
@@ -128,7 +145,7 @@ public class GameplayController : MonoBehaviour {
         attackButtons.interactable = true;
         attackButtons.blocksRaycasts = true;
         player.stopShield();
-       
+        player.preventFireballs = false;
         currentEnemy.currentTurnType = TurnType.Defense;
     }
     public void switchPlayerToDefense(){
@@ -139,6 +156,7 @@ public class GameplayController : MonoBehaviour {
         defenseButtons.alpha = 1;
         defenseButtons.interactable = true;
         defenseButtons.blocksRaycasts = true;
+        currentEnemy.preventFireballs = false;
         currentEnemy.currentTurnType = TurnType.Attack;
 
     }
