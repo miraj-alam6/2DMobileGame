@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55fe3a14048f5453c90d7443ad097792, type: 3}
-  m_Name: Wait0.3
+  m_Script: {fileID: 11500000, guid: 7c21e67b2af104e3ca3a22c7e6e2fad0, type: 3}
+  m_Name: Wait0.1
   m_EditorClassIdentifier: 
-  waitTime: 0.3
+  waitTime: 0.1

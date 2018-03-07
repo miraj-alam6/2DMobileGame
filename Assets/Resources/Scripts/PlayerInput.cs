@@ -8,6 +8,7 @@ from this class.
 */
 public class PlayerInput : MonoBehaviour {
     Unit playerUnit;
+    public Command[] cm;
 	// Use this for initialization
 	void Start () {
         playerUnit = GetComponent<Unit>();

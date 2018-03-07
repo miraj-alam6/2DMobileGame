@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour {
     
-    public State attackState;
-    public State defenseState;
+    public Thinker attackThinker;
+    public Thinker defenseThinker;
+    public Queue<Command> commandQueue;
     public Queue<Action_> actionQueue;
     public bool doingAction = false;
     public bool thinking = false;
@@ -13,11 +14,14 @@ public class AIController : MonoBehaviour {
     public float waitTime = 0; //waiting is an AI only action, so it is here instead of in Unit
     public Action_ tempAction; //Just a single action for testing.
     public Action_ tempWaitAction; //Just a single wait for testing.
+    private Command lastCommand; //made this here so that Update doesn't keep creating and destroying
+    //objects. Check if that actually can be a problem for performance.
 
     public Unit unit;
 	// Use this for initialization
 	void Start () {
         actionQueue = new Queue<Action_>();
+        commandQueue = new Queue<Command>();
         unit = GetComponent<Unit>(); //will use this to know if it is attacking or defending.
         //Unit does not have handle to AI, because unit is also used by the player
         GameplayController.instance.currentEnemy = unit;
@@ -26,9 +30,11 @@ public class AIController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(!doingAction){
-            if(actionQueue.Count > 0){
+            if(commandQueue.Count > 0){
                 if(waitTime <=0){
-                    actionQueue.Dequeue().Act(this);
+                    lastCommand = commandQueue.Dequeue();
+                    waitTime = lastCommand.waitTime;
+                    lastCommand.action.Act(this);
                 }
                 else{
                     waitTime -= Time.deltaTime;
@@ -37,15 +43,13 @@ public class AIController : MonoBehaviour {
             else{
                 if(!thinking && unit.currentTurnType == TurnType.Attack){
                     thinking = true;
-                    tempAttackThink();
-                    //Need to Think here, and fill up the actionQueue,
-                    //There is some randomness to how far the AI will think.
-                    //Think will be a coroutine. Once coroutine is done, it will
-                    //turn the boolean off. The AI can continue thinking as it is acting as
-                    //well. But it only ever starts to think once the queue is empty. Thinking
-                    //itself has randomness to how long it last, thus it may keep adding actions to 
-                    //the queue. 
-                    //Thinking also depends on the state that the AI is in currently.
+                    attackThinker.Think(this);
+                    // tempAttackThink();
+                    //TODO: need to implement complex thinking that requires being a coroutine.
+                }
+                //This is defense thinking
+                else{
+                    
                 }
        
             }
@@ -85,6 +89,16 @@ public class AIController : MonoBehaviour {
         actionQueue.Enqueue(tempWaitAction);
         actionQueue.Enqueue(tempWaitAction); actionQueue.Enqueue(tempWaitAction);
         thinking = false;
+    }
+
+    public void AddToActionQueue(Command[] commands){
+        foreach(Command cm in commands){
+            commandQueue.Enqueue(cm);    
+        }
+
+    }
+    public void ClearActionQueue(){
+        actionQueue.Clear();
     }
 
     //Game Manager calls this when time is up
