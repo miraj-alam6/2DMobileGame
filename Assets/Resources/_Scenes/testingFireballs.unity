@@ -1862,11 +1862,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114921779239387836, guid: 3f6c6ff9384f04d3cb8942be663c77ed,
-        type: 2}
-      propertyPath: cm.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4646386712281886, guid: 3f6c6ff9384f04d3cb8942be663c77ed, type: 2}
       propertyPath: m_LocalPosition.x
       value: -3.75
@@ -1904,10 +1899,6 @@ Prefab:
       propertyPath: vitalsUI
       value: 
       objectReference: {fileID: 238657967}
-    - target: {fileID: 1662537024894380, guid: 3f6c6ff9384f04d3cb8942be663c77ed, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f6c6ff9384f04d3cb8942be663c77ed, type: 2}
   m_IsPrefabParent: 0

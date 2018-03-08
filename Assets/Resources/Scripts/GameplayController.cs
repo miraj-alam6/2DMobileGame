@@ -172,6 +172,6 @@ public class GameplayController : MonoBehaviour {
     public void removeFireball(Offense fireball)
     {
         currentFireballs.Remove(fireball);
-        print("Fireballs left: "+currentFireballs.Count);
+//        print("Fireballs left: "+currentFireballs.Count);
     }
 }

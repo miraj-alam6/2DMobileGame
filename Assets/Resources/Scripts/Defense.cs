@@ -30,8 +30,28 @@ public class Defense : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(unit){
-            print("got here");
+//            print("got here");
             unit.addMP(-(drainRate *Time.deltaTime));
         }
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(TagNames.Fireball))
+        {
+            Offense fireball = collision.GetComponent<Offense>();
+            if(fireball!=null && (compareToFireball(fireball) >= 0)){
+                fireball.DestroyFromGame();
+            }
+            else{
+                //Have specific action for by how much the number the shield was trumped
+                //for how much shield gauge is broken. For now simply stop the shield.
+                unit.stopShield();
+            }
+        }
+    }
+
+    private int compareToFireball(Offense fireball){
+        return numberValue - fireball.numberValue;
+    }
 }
