@@ -9,6 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea2aa3680cf484efcb8f8756b3a9c3f3, type: 3}
-  m_Name: BasicOffenseThinker
+  m_Name: BasicOffenseThinker1
   m_EditorClassIdentifier: 
   risingAction: {fileID: 11400000, guid: 283f91253e47e4e19824888260ccb8e9, type: 2}
+  weakBarrage: {fileID: 11400000, guid: d9341a04c1e3d4ca6b08097a0a02c979, type: 2}
+  weakMediumBarrage: {fileID: 11400000, guid: ee98a6e6a174c4f5db6ac959ed8da6e0, type: 2}
+  waitFullTurn: {fileID: 11400000, guid: 5e52099187bd44b18adbf67084389834, type: 2}

@@ -14,13 +14,23 @@ public class Utility {
         }
         return null;
     }
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public static bool RandomPercentageDecision(int percent){
+        float n = Random.value * 100;
+        if(n < percent){
+            return true;
+        }
+        return false;
+    }
+
+    public static bool RandomDecisionGeneral(int number, int max)
+    {
+        float n = Random.value * max;
+        if (n < number)
+        {
+            return true;
+        }
+        return false;
+    }
+
 }

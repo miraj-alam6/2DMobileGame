@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Resources/_Scenes/practiceArena.unity
+    guid: 943284b3955734f9e87395738573510a
+  - enabled: 1
     path: Assets/Resources/_Scenes/testingFireballs.unity
     guid: b4e59515466d048c1aeb920ddc6344e2

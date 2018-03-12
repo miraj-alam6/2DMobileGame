@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 0
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -1032,7 +1032,7 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 3
+  - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -1050,6 +1050,52 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!1001 &341724399
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4351018655368280, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351018655368280, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351018655368280, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351018655368280, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351018655368280, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351018655368280, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351018655368280, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351018655368280, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315539811893162, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 37c5448d57df94437ae78540ccacecc5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &368892892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,6 +1313,62 @@ Transform:
   m_Father: {fileID: 2131532675}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &464273500
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4777467765792710, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777467765792710, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777467765792710, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777467765792710, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777467765792710, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777467765792710, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777467765792710, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777467765792710, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754606721620486, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198746442422996270, guid: af233544a0ad94194b010616f3e133b2,
+        type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 198746442422996270, guid: af233544a0ad94194b010616f3e133b2,
+        type: 2}
+      propertyPath: randomSeed
+      value: 748911158
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: af233544a0ad94194b010616f3e133b2, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &515036515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,6 +2001,23 @@ Prefab:
       propertyPath: vitalsUI
       value: 
       objectReference: {fileID: 238657967}
+    - target: {fileID: 114211433341442782, guid: 3f6c6ff9384f04d3cb8942be663c77ed,
+        type: 2}
+      propertyPath: name
+      value: Blaze
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662537024894380, guid: 3f6c6ff9384f04d3cb8942be663c77ed, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662537024894380, guid: 3f6c6ff9384f04d3cb8942be663c77ed, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242797866898858, guid: 3f6c6ff9384f04d3cb8942be663c77ed, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f6c6ff9384f04d3cb8942be663c77ed, type: 2}
   m_IsPrefabParent: 0
@@ -2016,6 +2135,52 @@ Transform:
   m_PrefabParentObject: {fileID: 4161887549094744, guid: 53bc2142a71f04e19af2ca87dbf18aff,
     type: 2}
   m_PrefabInternal: {fileID: 1402347034}
+--- !u!1001 &734011964
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4853090850313044, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853090850313044, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853090850313044, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853090850313044, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853090850313044, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853090850313044, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853090850313044, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853090850313044, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928062474264456, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 893130ccc9aa94c1db2a6437f8db881b, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &758617427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,6 +2776,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e259db01740b54651a3a7a0e92b8fcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &966319680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 966319681}
+  m_Layer: 0
+  m_Name: ParticleSystemHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &966319681
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 966319680}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1029627232
 Prefab:
   m_ObjectHideFlags: 0
@@ -3021,6 +3214,40 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 405827460}
+          m_MethodName: shieldButton2Release
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 405827460}
+          m_MethodName: shieldButton2Press
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -4343,27 +4570,28 @@ Prefab:
         type: 2}
       propertyPath: vitalsUI
       value: 
-      objectReference: {fileID: 2021967660}
+      objectReference: {fileID: 114466613099544574, guid: 7ef8297458aac4b9cb39c3c110230c03,
+        type: 2}
     - target: {fileID: 1861701085290656, guid: 0bee59bad70414c428bcc63e0a5d93fc, type: 2}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1421728993661340, guid: 0bee59bad70414c428bcc63e0a5d93fc, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114176056438450178, guid: 0bee59bad70414c428bcc63e0a5d93fc,
+        type: 2}
+      propertyPath: attackThinker
+      value: 
+      objectReference: {fileID: 11400000, guid: 223e25b5a37784a3f97f32663c91251d,
+        type: 2}
+    - target: {fileID: 114176056438450178, guid: 0bee59bad70414c428bcc63e0a5d93fc,
+        type: 2}
+      propertyPath: tempAction
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114176056438450178, guid: 0bee59bad70414c428bcc63e0a5d93fc,
         type: 2}
       propertyPath: tempWaitAction
       value: 
-      objectReference: {fileID: 11400000, guid: 4f57b7006bc5448ed8f4db456ca06cab,
-        type: 2}
-    - target: {fileID: 114176056438450178, guid: 0bee59bad70414c428bcc63e0a5d93fc,
-        type: 2}
-      propertyPath: attackThinker
-      value: 
-      objectReference: {fileID: 11400000, guid: 52555d3e54bed4a1181727d3d94fbd10,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bee59bad70414c428bcc63e0a5d93fc, type: 2}
   m_IsPrefabParent: 0
@@ -4734,11 +4962,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - {fileID: 114082700720365318, guid: 0bee59bad70414c428bcc63e0a5d93fc, type: 2}
-  - {fileID: 114082700720365318, guid: 0bee59bad70414c428bcc63e0a5d93fc, type: 2}
-  - {fileID: 114082700720365318, guid: 0bee59bad70414c428bcc63e0a5d93fc, type: 2}
   enemySpawnPoint: {fileID: 588471123}
   enemyTempSpawnPoint: {fileID: 1253794673}
-  isPracticeLevel: 0
+  isPracticeLevel: 1
+  spawnWaitTime: 1
 --- !u!4 &1563426053
 Transform:
   m_ObjectHideFlags: 0
@@ -5714,6 +5941,40 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 405827460}
+          m_MethodName: shieldButton3Press
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 405827460}
+          m_MethodName: shieldButton3Release
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!1001 &1798349219
 Prefab:
@@ -6499,3 +6760,5 @@ MonoBehaviour:
   attackButtons: {fileID: 1898117809}
   defenseButtons: {fileID: 235595395}
   levelController: {fileID: 0}
+  playerVitalsUI: {fileID: 238657967}
+  enemyVitalsUI: {fileID: 2021967660}

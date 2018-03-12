@@ -5,6 +5,7 @@ using UnityEngine;
 public class Unit : MonoBehaviour {
 
     private int unitID = 0;
+    public string unitName;
     public Offense fireball1;
     public Offense fireball2;
     public Offense fireball3;
@@ -20,15 +21,15 @@ public class Unit : MonoBehaviour {
     public int maxHp;
     public int maxMp;
     [SerializeField]
-    private float hp;
+    private float _hp;
     [SerializeField]
-    private float mp;
+    private float _mp;
     public float hpRegenRate =0;
     public float mpRegenRate;
 
     public float maxSp = 10;
     public float sp =10;
-    public VitalsUI vitalsUI;
+    private VitalsUI vitalsUI; //Still keep this public for Player, but not for Enemy
 
     public bool usingShield; //not sure if necessary. Currently is being used in code, but that itself may not be necessary
     public bool canUseShield=true;
@@ -43,6 +44,19 @@ public class Unit : MonoBehaviour {
     private Offense collidedFireball;
     private bool _spawning = false;
     private bool _preventFireballs = false;
+
+    public float mp
+    {
+        get
+        {
+            return _mp;
+        }
+        //set{
+        //    _spawning = value; 
+        //}
+
+    }
+
     public bool spawning{
         get{ 
             return _spawning; 
@@ -69,8 +83,15 @@ public class Unit : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         unitID = GameplayController.instance.GetNextUnitID();
-        hp = maxHp;
-        mp = maxMp;
+        if(gameObject.CompareTag(TagNames.Player)){
+            vitalsUI = GameplayController.instance.playerVitalsUI;
+        }
+        else{
+            vitalsUI = GameplayController.instance.enemyVitalsUI;
+        }
+
+        _hp = maxHp;
+        _mp = maxMp;
         vitalsUI.InitializeVitals(maxHp, maxMp);
 	}
 	
@@ -112,7 +133,7 @@ public class Unit : MonoBehaviour {
 
     //Put a negative value to remove
     public void addMP(float val){
-        mp = Mathf.Clamp(mp+val,0,maxMp);
+        _mp = Mathf.Clamp(mp+val,0,maxMp);
 //        print(mp);
         if(vitalsUI != null){
             vitalsUI.UpdateVitals(VitalName.MP,mp,maxMp);
@@ -128,10 +149,10 @@ public class Unit : MonoBehaviour {
     //Put a negative value to remove
     public void addHP(float val)
     {
-        hp = Mathf.Clamp(hp + val, 0, maxHp);
+        _hp = Mathf.Clamp(_hp + val, 0, maxHp);
         if(vitalsUI!=null){
-            vitalsUI.UpdateVitals(VitalName.HP, hp, maxHp);
-            if(hp <=0){
+            vitalsUI.UpdateVitals(VitalName.HP, _hp, maxHp);
+            if(_hp <=0){
                 Die();
             }
         }
@@ -164,7 +185,7 @@ public class Unit : MonoBehaviour {
                     break;
             }
             usingShield = true;
-            if (shield != null && shield.numberValue <= mp)
+            if (shield != null && shield.numberValue <= _mp)
             {
                 currentShield = (Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
                 currentShield.Initialize(this);
@@ -217,8 +238,17 @@ public class Unit : MonoBehaviour {
     public void Die(){
         //TODO: Need to do more. Have to check if this is main player, probably with checking player
         //tag is easiest way
-        Destroy(this.gameObject, 0.2f);
         removeShield();
+        //TODO probably isn't good hard code constants.
+        float waitTime = 0.2f;
+        Destroy(this.gameObject, waitTime);
+        //Even though the above happens .2 seconds later. spawnNextEnemy won't happen instantly either
+        //because levelController itself has a wait time variable that it will use to wait before
+        //actualy spawning.
+        if(!(gameObject.CompareTag(TagNames.Player))){
+            GameplayController.instance.levelController.spawnNextEnemy();
+        }
+
     }
 
 

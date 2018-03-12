@@ -16,7 +16,10 @@ public class GameplayController : MonoBehaviour {
     private int lastUnitID=-1;
     private List<Offense> currentFireballs;
     public LevelController levelController;
-   
+    public VitalsUI playerVitalsUI; 
+    public VitalsUI enemyVitalsUI; //need this here so gameplay controller can pass on the UI reference
+    //to newly spawned enemies.
+
 
 
     private void Awake(){
@@ -128,12 +131,18 @@ public class GameplayController : MonoBehaviour {
     public void turnSwitch(){
         turnTimeLeft = turnTime;
         if(player){
+            if (currentEnemy)
+            {
+                //TODO: Also need to stop thinking coroutine first at this point.
+                currentEnemy.GetComponent<AIController>().ClearActionQueue();
+            }
             if (player.currentTurnType == TurnType.Attack){
                 switchPlayerToDefense(); 
             }
             else{
                 switchPlayerToAttack();
             }
+
         }
     }
     public void switchPlayerToAttack(){
@@ -172,6 +181,6 @@ public class GameplayController : MonoBehaviour {
     public void removeFireball(Offense fireball)
     {
         currentFireballs.Remove(fireball);
-//        print("Fireballs left: "+currentFireballs.Count);
+        print("Fireballs left: "+currentFireballs.Count);
     }
 }

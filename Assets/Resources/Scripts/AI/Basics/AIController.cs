@@ -7,6 +7,7 @@ public class AIController : MonoBehaviour {
     public Thinker attackThinker;
     public Thinker defenseThinker;
     public Queue<Command> commandQueue;
+
     public Queue<Action_> actionQueue;
     public bool doingAction = false;
     public bool thinking = false;
@@ -98,7 +99,7 @@ public class AIController : MonoBehaviour {
 
     }
     public void ClearActionQueue(){
-        actionQueue.Clear();
+        commandQueue.Clear();
     }
 
     //Game Manager calls this when time is up

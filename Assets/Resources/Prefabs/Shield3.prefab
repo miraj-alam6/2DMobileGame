@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberValue: 3
-  drainRate: 7
+  drainRate: 5
   unit: {fileID: 0}
 --- !u!212 &212993579571499988
 SpriteRenderer:

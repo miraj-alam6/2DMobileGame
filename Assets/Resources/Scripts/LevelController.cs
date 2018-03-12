@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController: MonoBehaviour {
-    public Unit[] EnemyList;
-    public Transform EnemySpawnPoint;
-    public Transform EnemyTempSpawnPoint;
+    public Unit[] enemyList;
+    public Transform enemySpawnPoint;
+    public Transform enemyTempSpawnPoint;
+    public bool isPracticeLevel;
+    public float spawnWaitTime =1f; //how long we wait to spawn next enemy once current enemy dies
 	// Use this for initialization
 	void Start () {
         GameplayController.instance.levelController = this;
@@ -13,12 +15,26 @@ public class LevelController: MonoBehaviour {
 	
 
 
-    public void nextEnemy(){
-        
+
+
+    public void spawnNextEnemy()
+    {
+        if (isPracticeLevel)
+        {
+            Invoke("practiceArenaSpawn",spawnWaitTime);
+        }
+        else
+        {
+            //Real code here todo
+        }
     }
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void practiceArenaSpawn(){
+        Instantiate(enemyList[0],enemyTempSpawnPoint.position, enemyTempSpawnPoint.rotation);
+    }
 
 }
