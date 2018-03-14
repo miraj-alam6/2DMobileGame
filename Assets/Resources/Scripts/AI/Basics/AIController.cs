@@ -30,6 +30,7 @@ public class AIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+//        print("Queue size: " +commandQueue.Count + doingAction);
         if(!doingAction){
             if(commandQueue.Count > 0){
                 if(waitTime <=0){
@@ -43,14 +44,20 @@ public class AIController : MonoBehaviour {
             }
             else{
                 if(!thinking && unit.currentTurnType == TurnType.Attack){
-                    thinking = true;
-                    attackThinker.Think(this);
+                    if(attackThinker && attackThinker.canThink){
+                        thinking = true;
+                        attackThinker.Think(this);   
+                    }
                     // tempAttackThink();
                     //TODO: need to implement complex thinking that requires being a coroutine.
                 }
                 //This is defense thinking
                 else{
-                    
+                    if (defenseThinker && defenseThinker.canThink)
+                    {
+                        thinking = true;
+                        defenseThinker.Think(this);
+                    }
                 }
        
             }
@@ -99,6 +106,8 @@ public class AIController : MonoBehaviour {
 
     }
     public void ClearActionQueue(){
+        thinking = false;
+        waitTime = 0;
         commandQueue.Clear();
     }
 

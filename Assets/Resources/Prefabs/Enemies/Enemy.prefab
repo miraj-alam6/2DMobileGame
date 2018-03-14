@@ -180,7 +180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550683919432408}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6099999, y: 0.15, z: 0}
+  m_LocalPosition: {x: -0.6099999, y: 0.15, z: 0}
   m_LocalScale: {x: 0.4, y: 1, z: 1}
   m_Children:
   - {fileID: 4461477005747696}
@@ -405,8 +405,8 @@ MonoBehaviour:
   facing: 2
   maxHp: 10
   maxMp: 10
-  hp: 0
-  mp: 0
+  _hp: 0
+  _mp: 0
   hpRegenRate: 0
   mpRegenRate: 1
   maxSp: 10

@@ -103,10 +103,20 @@ public class Unit : MonoBehaviour {
         fireball.unitID = unitID;
     }
 
+    public void InitShieldProperties(Defense shield)
+    {
+        shield.GetComponent<Mover>().direction = facing;
+        shield.GetComponent<Mover>().InitDirection();
+        currentShield.Initialize(this);
+    }
+
     public void shootFireball(int number){
+//        print("Got here at least10 " +preventFireballs);
+
         if(preventFireballs){
             return;
         }
+//        print("Got here at least20");
         Offense fireball = null;
         switch(number){
             case 1:
@@ -188,7 +198,7 @@ public class Unit : MonoBehaviour {
             if (shield != null && shield.numberValue <= _mp)
             {
                 currentShield = (Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
-                currentShield.Initialize(this);
+                InitShieldProperties(currentShield);
                 addMP(-shield.numberValue);
                 // Substracting MP here isn't enough. After creating the shield object,
                 //it  will deal with constantly draining your MP. The shield will also call stopShield

@@ -9,25 +9,34 @@ public class BasicOffenseThinker : Thinker {
     public Combo risingAction; 
     public Combo weakBarrage; 
     public Combo weakMediumBarrage;
-    public Combo waitFullTurn; 
+    public Combo waitFullTurn;
 
+    public int mpThresholdToWait;
+    public int chanceOfNotWaiting;
 
     //If the logic is too complicated, make this method call a coroutine. 
     public override void Think(AIController controller)
     {
-        if(controller.unit.mp > 5 || Utility.RandomPercentageDecision(80)){
-            
-            float f = Random.Range(1,3);
-            if(f > 2.5){
+//        Debug.Log("Got here");
+        if(controller.unit.mp > mpThresholdToWait || Utility.RandomPercentageDecision(chanceOfNotWaiting)){
+          
+            int i = Random.Range(1,8); // Be careful This only returns integers!
+           
+            if(i > 5){
+  //              Debug.Log("Think rising" + i );
                 controller.AddToActionQueue(risingAction.commands);    
             }
-            else if(f > 1.5){
+            else if(i > 3){
+//                Debug.Log("Think weakmedium" + i);
                 controller.AddToActionQueue(weakMediumBarrage.commands);    
 
             }
-            else if (f > 0.0f){
+            else if (i > 0){
+//                Debug.Log("Think weak" + i);
                 controller.AddToActionQueue(weakBarrage.commands);    
-
+            }
+            else{
+                Debug.Log("Think" + i);
             }
 
         }

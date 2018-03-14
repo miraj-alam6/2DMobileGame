@@ -15,3 +15,5 @@ MonoBehaviour:
   weakBarrage: {fileID: 11400000, guid: d9341a04c1e3d4ca6b08097a0a02c979, type: 2}
   weakMediumBarrage: {fileID: 11400000, guid: ee98a6e6a174c4f5db6ac959ed8da6e0, type: 2}
   waitFullTurn: {fileID: 11400000, guid: 5e52099187bd44b18adbf67084389834, type: 2}
+  mpThresholdToWait: 5
+  chanceOfNotWaiting: 60

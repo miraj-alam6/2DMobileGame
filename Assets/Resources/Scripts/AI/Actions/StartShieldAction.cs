@@ -6,6 +6,8 @@ using UnityEngine;
 public class StartShieldAction : Action_ {
     public int number;
     public override void Act(AIController controller){
-        controller.unit.startShield(number);
+        if(controller.unit.canUseShield){
+            controller.unit.startShield(number);
+        }
     }
 }

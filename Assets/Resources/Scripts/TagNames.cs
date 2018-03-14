@@ -6,4 +6,6 @@ public class TagNames {
     public static string Player = "Player";
     public static string Fireball = "Fireball";
     public static string FireballSprite = "FireballSprite";
+    public static string Shield = "Shield";
+    public static string ShieldSprite = "ShieldSprite";
 }

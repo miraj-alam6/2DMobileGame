@@ -36,7 +36,8 @@ public class GameplayController : MonoBehaviour {
         
         if (player.currentTurnType == TurnType.Attack)
         {
-            defenseButtons.alpha = 0;
+//            defenseButtons.alpha = 0;
+            defenseButtons.alpha = 0.5f;
             defenseButtons.interactable = false;
             defenseButtons.blocksRaycasts = false;
             attackButtons.alpha = 1;
@@ -46,7 +47,8 @@ public class GameplayController : MonoBehaviour {
         }
         else if (player.currentTurnType == TurnType.Defense)
         {
-            attackButtons.alpha = 0;
+            //attackButtons.alpha = 0;
+            attackButtons.alpha = 0.5f;
             attackButtons.interactable = false;
             attackButtons.blocksRaycasts = false;
             defenseButtons.alpha = 1;
@@ -133,14 +135,18 @@ public class GameplayController : MonoBehaviour {
         if(player){
             if (currentEnemy)
             {
-                //TODO: Also need to stop thinking coroutine first at this point.
+                //TODO: Also need to stop thinking coroutine first at this point, just do it in 
+                //clear action queue
                 currentEnemy.GetComponent<AIController>().ClearActionQueue();
+                currentEnemy.stopShield();
             }
             if (player.currentTurnType == TurnType.Attack){
-                switchPlayerToDefense(); 
+                //switchPlayerToDefense();
+                switchPlayerToDefenseDeux();
             }
             else{
-                switchPlayerToAttack();
+                //switchPlayerToAttack();
+                switchPlayerToAttackDeux();
             }
 
         }
@@ -169,6 +175,33 @@ public class GameplayController : MonoBehaviour {
         currentEnemy.currentTurnType = TurnType.Attack;
 
     }
+
+    public void switchPlayerToAttackDeux()
+    {
+        player.currentTurnType = TurnType.Attack;
+        defenseButtons.alpha = 0.5f;
+        defenseButtons.interactable = false;
+        defenseButtons.blocksRaycasts = false;
+        attackButtons.alpha = 1;
+        attackButtons.interactable = true;
+        attackButtons.blocksRaycasts = true;
+        player.stopShield();
+        player.preventFireballs = false;
+        currentEnemy.currentTurnType = TurnType.Defense;
+    }
+    public void switchPlayerToDefenseDeux()
+    {
+        player.currentTurnType = TurnType.Defense;
+        attackButtons.alpha = 0.5f;
+        attackButtons.interactable = false;
+        attackButtons.blocksRaycasts = false;
+        defenseButtons.alpha = 1;
+        defenseButtons.interactable = true;
+        defenseButtons.blocksRaycasts = true;
+        currentEnemy.preventFireballs = false;
+        currentEnemy.currentTurnType = TurnType.Attack;
+
+    }
     public int GetNextUnitID(){
         return ++lastUnitID;
     }
@@ -181,6 +214,6 @@ public class GameplayController : MonoBehaviour {
     public void removeFireball(Offense fireball)
     {
         currentFireballs.Remove(fireball);
-        print("Fireballs left: "+currentFireballs.Count);
+      //  print("Fireballs left: "+currentFireballs.Count);
     }
 }
