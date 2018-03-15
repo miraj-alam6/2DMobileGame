@@ -15,6 +15,7 @@ public class Utility {
         return null;
     }
 
+
     public static bool RandomPercentageDecision(int percent){
         float n = Random.value * 100;
         if(n < percent){

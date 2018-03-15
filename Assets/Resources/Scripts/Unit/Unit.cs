@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour {
 
     public float maxSp = 10;
     public float sp =10;
+    [SerializeField]
     private VitalsUI vitalsUI; //Still keep this public for Player, but not for Enemy
 
     public bool usingShield; //not sure if necessary. Currently is being used in code, but that itself may not be necessary

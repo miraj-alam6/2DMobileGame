@@ -26,30 +26,29 @@ public class Mover : MonoBehaviour {
             if(rb2D){
                 rb2D.velocity = new Vector2(-speed, 0);
             }
-            Transform spriteTransform = null;
+            SpriteRenderer spriteRenderer = null;
             print("HYA");
 
             if(gameObject.CompareTag(TagNames.Fireball)){
-                spriteTransform = Utility.GetChildByTag(transform, TagNames.FireballSprite);
+                spriteRenderer = Utility.GetChildByTag(transform, TagNames.FireballSprite).
+                                         GetComponent<SpriteRenderer>();
             }
             else if(gameObject.CompareTag(TagNames.Shield)){
                 print("HYAA");
-                spriteTransform = Utility.GetChildByTag(transform, TagNames.ShieldSprite);
+                spriteRenderer = Utility.GetChildByTag(transform, TagNames.ShieldSprite).
+                                         GetComponent<SpriteRenderer>();
             }
             //spriteTransform.localScale = Vector3.Scale(transform.localScale, 
             //                                           new Vector3(-1, 1, 1));  //this just sets the scale
             ////doesn't multiply
             //Multiplies one vector by another's corresponding. 
-            if(spriteTransform){
-                print("HYAAA " +spriteTransform.gameObject);
-                spriteTransform.localScale = new Vector3(-1, 1, 1);
-                print(spriteTransform.localScale);
-                spriteTransform.localScale = new Vector3(-1,1,1);
-                spriteTransform.localScale = 
-                    Vector3.Scale(spriteTransform.localScale, new Vector3(-1, 1, 1));
-                spriteTransform.localScale = new Vector3(-1, 1, 1);
-                spriteTransform.localScale = new Vector3(-1, 1, 1);
-                spriteTransform.localScale = new Vector3(-1, 1, 1);
+            if(spriteRenderer){
+                print("HYAAA " +spriteRenderer.gameObject);
+                //             spriteRenderer.localScale = 
+                //                 Vector3.Scale(spriteRenderer.localScale, new Vector3(-1, 1, 1));
+                ///There is a much simpler solution to flip the sprite
+                spriteRenderer.flipX = true;
+              
             }
             //spriteTransform.localScale =
                                //spriteTransform.localScale *  new Vector3(-1, 1, 1); 
