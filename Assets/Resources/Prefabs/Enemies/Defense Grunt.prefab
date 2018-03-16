@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212379639889294280}
   - component: {fileID: 95512771399357054}
   m_Layer: 0
-  m_Name: PlayerAnimator
-  m_TagString: Untagged
+  m_Name: EnemyAnimator
+  m_TagString: UnitAnimator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 1593071216803090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4295465321183652}
   m_Father: {fileID: 4272655985082648}
@@ -314,7 +314,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: -0.06, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,13 +404,14 @@ MonoBehaviour:
   shieldLocation: {fileID: 4272655985082648}
   facing: 2
   maxHp: 10
-  maxMp: 20
+  maxMp: 10
   _hp: 0
   _mp: 0
   hpRegenRate: 0
-  mpRegenRate: 3
+  mpRegenRate: 1
   maxSp: 10
   sp: 10
+  vitalsUI: {fileID: 0}
   usingShield: 0
   canUseShield: 1
   shieldGeneralCooldownTime: 0.1
@@ -431,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackThinker: {fileID: 11400000, guid: 56cbb8737c6054d119f70c652f5adc15, type: 2}
-  defenseThinker: {fileID: 0}
+  defenseThinker: {fileID: 11400000, guid: 72560b50b59a0438284e9b6d2574b3fb, type: 2}
   doingAction: 0
   thinking: 0
   waitTime: 0
@@ -559,7 +560,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 824f7c56b34fe4d2eb08c54e961072e7, type: 3}
-  m_Color: {r: 0.7205882, g: 0.7205882, b: 0.7205882, a: 1}
+  m_Color: {r: 1, g: 0.7363083, b: 0.04411763, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

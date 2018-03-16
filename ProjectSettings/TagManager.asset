@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Shield
   - ShieldSprite
+  - UnitAnimator
   layers:
   - Default
   - TransparentFX

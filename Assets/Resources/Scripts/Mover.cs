@@ -27,14 +27,14 @@ public class Mover : MonoBehaviour {
                 rb2D.velocity = new Vector2(-speed, 0);
             }
             SpriteRenderer spriteRenderer = null;
-            print("HYA");
+//            print("HYA");
 
             if(gameObject.CompareTag(TagNames.Fireball)){
                 spriteRenderer = Utility.GetChildByTag(transform, TagNames.FireballSprite).
                                          GetComponent<SpriteRenderer>();
             }
             else if(gameObject.CompareTag(TagNames.Shield)){
-                print("HYAA");
+ //               print("HYAA");
                 spriteRenderer = Utility.GetChildByTag(transform, TagNames.ShieldSprite).
                                          GetComponent<SpriteRenderer>();
             }
@@ -43,7 +43,7 @@ public class Mover : MonoBehaviour {
             ////doesn't multiply
             //Multiplies one vector by another's corresponding. 
             if(spriteRenderer){
-                print("HYAAA " +spriteRenderer.gameObject);
+       //         print("HYAAA " +spriteRenderer.gameObject);
                 //             spriteRenderer.localScale = 
                 //                 Vector3.Scale(spriteRenderer.localScale, new Vector3(-1, 1, 1));
                 ///There is a much simpler solution to flip the sprite

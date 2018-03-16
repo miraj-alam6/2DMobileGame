@@ -46,6 +46,8 @@ public class Unit : MonoBehaviour {
     private bool _spawning = false;
     private bool _preventFireballs = false;
 
+    private Animator animator;
+
     public float mp
     {
         get
@@ -90,7 +92,10 @@ public class Unit : MonoBehaviour {
         else{
             vitalsUI = GameplayController.instance.enemyVitalsUI;
         }
-
+        animator = Utility.GetChildByTag(transform,TagNames.UnitAnimator).GetComponent<Animator>();
+        if(!animator){
+            Debug.LogError("You need an animator on this unit");
+        }
         _hp = maxHp;
         _mp = maxMp;
         vitalsUI.InitializeVitals(maxHp, maxMp);
@@ -134,6 +139,7 @@ public class Unit : MonoBehaviour {
                 break;
         }
         if(fireball!=null && fireball.numberValue <= mp){
+            animator.SetTrigger(ParameterNames.Fire);
             GameObject obj = (GameObject)Instantiate(fireball.gameObject,fireballLocation.position,fireballLocation.rotation);
             //obj.GetComponent<Offense>().unitID = unitID;
             InitFireballProperties(obj.GetComponent<Offense>());
@@ -160,6 +166,9 @@ public class Unit : MonoBehaviour {
     //Put a negative value to remove
     public void addHP(float val)
     {
+        if(val < 0){
+            animator.SetTrigger(ParameterNames.Hurt);
+        }
         _hp = Mathf.Clamp(_hp + val, 0, maxHp);
         if(vitalsUI!=null){
             vitalsUI.UpdateVitals(VitalName.HP, _hp, maxHp);
@@ -195,9 +204,12 @@ public class Unit : MonoBehaviour {
                     Debug.LogError("Invalid number for shield. Must be an integer between 1 and 3.");
                     break;
             }
-            usingShield = true;
+
+
             if (shield != null && shield.numberValue <= _mp)
             {
+                usingShield = true;
+                animator.SetBool(ParameterNames.Defend, true);
                 currentShield = (Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
                 InitShieldProperties(currentShield);
                 addMP(-shield.numberValue);
@@ -210,6 +222,7 @@ public class Unit : MonoBehaviour {
     //General code used in all methods that destroy shield
     public void removeShield()
     {
+        animator.SetBool(ParameterNames.Defend, false);
         usingShield = false;
         if(currentShield){
             currentShield.destroySelf();

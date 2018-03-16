@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212379639889294280}
   - component: {fileID: 95512771399357054}
   m_Layer: 0
-  m_Name: PlayerAnimator
-  m_TagString: Untagged
+  m_Name: EnemyAnimator
+  m_TagString: UnitAnimator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,6 +411,7 @@ MonoBehaviour:
   mpRegenRate: 1
   maxSp: 10
   sp: 10
+  vitalsUI: {fileID: 0}
   usingShield: 0
   canUseShield: 1
   shieldGeneralCooldownTime: 0.1
