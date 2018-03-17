@@ -41,7 +41,7 @@ public class Defense : MonoBehaviour {
         {
             Offense fireball = collision.GetComponent<Offense>();
             if(fireball!=null && (compareToFireball(fireball) >= 0)){
-                fireball.DestroyFromGame();
+                fireball.Explode(false);
             }
             else{
                 //Have specific action for by how much the number the shield was trumped

@@ -290,6 +290,7 @@ public class Unit : MonoBehaviour {
                && collidedFireball.unitID != unitID
               ){
                 addHP(-collidedFireball.damage);
+                collidedFireball.Explode(true);
             }
         }
     }

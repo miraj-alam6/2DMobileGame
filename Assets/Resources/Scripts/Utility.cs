@@ -33,5 +33,7 @@ public class Utility {
         }
         return false;
     }
-
+    public static void AddToParticleSystemContainer(Transform transform){
+        transform.SetParent(GameplayController.instance.particleSystemHolder);
+    }
 }

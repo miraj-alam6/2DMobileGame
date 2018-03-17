@@ -19,7 +19,8 @@ public class GameplayController : MonoBehaviour {
     public VitalsUI playerVitalsUI; 
     public VitalsUI enemyVitalsUI; //need this here so gameplay controller can pass on the UI reference
     //to newly spawned enemies.
-
+    public Transform particleSystemHolder; //This is to hold particle systems so that they don't get
+    //destroyed when parent gets destroyed.
 
 
     private void Awake(){

@@ -12,6 +12,10 @@ public class Offense : MonoBehaviour {
     [SerializeField]
     private int _unitID; //Id of which unit "owns" the fireball, thus can't get hit by it.
 
+    public ParticleSystem movingParticleSystem;
+    public ParticleSystem succcessParticleSystem;
+    public ParticleSystem failParticleSystem;
+
     public int unitID
     {
         get
@@ -41,9 +45,25 @@ public class Offense : MonoBehaviour {
         }
     }
 
+
+    public void Explode(bool success){
+        if (success)
+        {
+            Utility.AddToParticleSystemContainer(succcessParticleSystem.transform);
+            succcessParticleSystem.Play();
+        }
+        else{
+            Utility.AddToParticleSystemContainer(failParticleSystem.transform);
+            failParticleSystem.Play(); 
+        }
+
+        DestroyFromGame();
+    }
     public void DestroyFromGame(){
         GameplayController.instance.removeFireball(this);
- 
+        //movingParticleSystem.transform.SetParent(GameplayController.instance.particleSystemHolder);
+        Utility.AddToParticleSystemContainer(movingParticleSystem.transform);
+        Destroy(movingParticleSystem.gameObject,1f); //fix this from being hard coded later
         Destroy(this.gameObject);
 
     }

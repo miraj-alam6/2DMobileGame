@@ -8,8 +8,10 @@ public class LevelController: MonoBehaviour {
     public Transform enemyTempSpawnPoint;
     public bool isPracticeLevel;
     public float spawnWaitTime =1f; //how long we wait to spawn next enemy once current enemy dies
+    private bool isSpawning;
 	// Use this for initialization
 	void Start () {
+        isSpawning = false;
         GameplayController.instance.levelController = this;
 	}
 	
@@ -21,7 +23,11 @@ public class LevelController: MonoBehaviour {
     {
         if (isPracticeLevel)
         {
-            Invoke("practiceArenaSpawn",spawnWaitTime);
+            if (!isSpawning)
+            {
+                isSpawning = true;
+                Invoke("practiceArenaSpawn", spawnWaitTime);
+            }
         }
         else
         {
@@ -34,6 +40,7 @@ public class LevelController: MonoBehaviour {
 	}
 
     public void practiceArenaSpawn(){
+        isSpawning = false;
         Instantiate(enemyList[0],enemyTempSpawnPoint.position, enemyTempSpawnPoint.rotation);
     }
 
