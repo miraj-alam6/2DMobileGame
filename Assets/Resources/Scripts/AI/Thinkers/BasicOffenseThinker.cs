@@ -14,14 +14,21 @@ public class BasicOffenseThinker : Thinker {
     public int mpThresholdToWait;
     public int chanceOfNotWaiting;
 
+
     //If the logic is too complicated, make this method call a coroutine. 
     public override void Think(AIController controller)
     {
-//        Debug.Log("Got here");
+        Utility.CoroutineStarter(ThinkRoutine(controller));
+    }
+    //If the logic is too complicated, make this method call a coroutine. 
+    public IEnumerator ThinkRoutine(AIController controller)
+    {
+        Debug.Log("Got here");
         if(controller.unit.mp > mpThresholdToWait || Utility.RandomPercentageDecision(chanceOfNotWaiting)){
           
             int i = Random.Range(1,8); // Be careful This only returns integers!
            
+            yield return null;
             if(i > 5){
   //              Debug.Log("Think rising" + i );
                 controller.AddToActionQueue(risingAction.commands);    
@@ -32,7 +39,7 @@ public class BasicOffenseThinker : Thinker {
 
             }
             else if (i > 0){
-//                Debug.Log("Think weak" + i);
+                Debug.Log("Think weak" + i);
                 controller.AddToActionQueue(weakBarrage.commands);    
             }
             else{

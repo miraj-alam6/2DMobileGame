@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //These are helper classes 
-public class Utility {
+public class Utility:MonoBehaviour {
+
 
     //takes parent transform, returns child transform
     public static Transform GetChildByTag(Transform parent, string childTag){
@@ -35,5 +36,12 @@ public class Utility {
     }
     public static void AddToParticleSystemContainer(Transform transform){
         transform.SetParent(GameplayController.instance.particleSystemHolder);
+    }
+
+    public static void CoroutineStarter(IEnumerator coroutine)
+    {
+        //Can't call StartCoroutine without an instance monobehavior
+        //so just use GameplayController since that is always guaranteed to exist
+        GameplayController.instance.StartCoroutine(coroutine); 
     }
 }
