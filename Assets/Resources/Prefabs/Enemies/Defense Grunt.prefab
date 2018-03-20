@@ -404,11 +404,11 @@ MonoBehaviour:
   shieldLocation: {fileID: 4272655985082648}
   facing: 2
   maxHp: 10
-  maxMp: 10
+  maxMp: 12
   _hp: 0
   _mp: 0
   hpRegenRate: 0
-  mpRegenRate: 1
+  mpRegenRate: 2
   maxSp: 10
   sp: 10
   vitalsUI: {fileID: 0}
@@ -481,6 +481,9 @@ MonoBehaviour:
   numberValue: 1
   damage: 1
   _unitID: 0
+  movingParticleSystem: {fileID: 0}
+  succcessParticleSystem: {fileID: 0}
+  failParticleSystem: {fileID: 0}
 --- !u!212 &212333749590261982
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -21,7 +21,8 @@ public class GameplayController : MonoBehaviour {
     //to newly spawned enemies.
     public Transform particleSystemHolder; //This is to hold particle systems so that they don't get
     //destroyed when parent gets destroyed.
-
+    public float turnInterludeTime = 0.5f;
+    private float turnCurrentInterludeTime = 0;
 
     private void Awake(){
         currentFireballs = new List<Offense>();
@@ -59,19 +60,20 @@ public class GameplayController : MonoBehaviour {
         }
         maxTimeBarWidth = timeBarTransform.sizeDelta.x;
         turnTimeLeft = turnTime;
+        turnCurrentInterludeTime = turnInterludeTime;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(turnTimeLeft <= 0.01){
+        if(turnTimeLeft <= 0.00001){
             if(currentFireballs.Count <= 0){
+                turnCurrentInterludeTime -= Time.deltaTime;
                 if(player){
-                    
-                    if(currentEnemy && !currentEnemy.spawning){
+                    if(currentEnemy && !currentEnemy.spawning && turnCurrentInterludeTime <=0.0001f){
                         turnSwitch(); 
                     }
                     else{
-                        //TODO: Spawn the next enemy
+                        //TODO: Spawn the next enemy, right now this is being done in a different way
                     }
                 }
             }
@@ -133,6 +135,7 @@ public class GameplayController : MonoBehaviour {
     }
     public void turnSwitch(){
         turnTimeLeft = turnTime;
+        turnCurrentInterludeTime = turnInterludeTime;
         if(player){
             if (currentEnemy)
             {

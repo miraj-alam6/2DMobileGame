@@ -50,10 +50,12 @@ public class Offense : MonoBehaviour {
         if (success)
         {
             Utility.AddToParticleSystemContainer(succcessParticleSystem.transform);
+            movingParticleSystem.Stop();
             succcessParticleSystem.Play();
         }
         else{
             Utility.AddToParticleSystemContainer(failParticleSystem.transform);
+            movingParticleSystem.Stop();
             failParticleSystem.Play(); 
         }
 

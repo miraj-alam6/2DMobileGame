@@ -12,7 +12,7 @@ public class KeyboardInput : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         if(Input.GetKeyDown(KeyCode.J) && player.currentTurnType == TurnType.Attack ){
             playerInput.fireballButton1();
         }
@@ -36,15 +36,15 @@ public class KeyboardInput : MonoBehaviour {
         {
             playerInput.shieldButton3Press();
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyUp(KeyCode.A))
         {
             playerInput.shieldButton1Release();
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyUp(KeyCode.S))
         {
             playerInput.shieldButton2Release();
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyUp(KeyCode.D))
         {
             playerInput.shieldButton3Release();
         }

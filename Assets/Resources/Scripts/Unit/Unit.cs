@@ -111,9 +111,10 @@ public class Unit : MonoBehaviour {
 
     public void InitShieldProperties(Defense shield)
     {
+        shield.transform.SetParent(this.transform);
         shield.GetComponent<Mover>().direction = facing;
         shield.GetComponent<Mover>().InitDirection();
-        currentShield.Initialize(this);
+        shield.Initialize(this);
     }
 
     public void shootFireball(int number){
