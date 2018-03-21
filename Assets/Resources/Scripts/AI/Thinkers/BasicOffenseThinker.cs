@@ -23,7 +23,7 @@ public class BasicOffenseThinker : Thinker {
     //If the logic is too complicated, make this method call a coroutine. 
     public IEnumerator ThinkRoutine(AIController controller)
     {
-        Debug.Log("Got here");
+//        Debug.Log("Got here");
         if(controller.unit.mp > mpThresholdToWait || Utility.RandomPercentageDecision(chanceOfNotWaiting)){
           
             int i = Random.Range(1,8); // Be careful This only returns integers!
@@ -39,11 +39,11 @@ public class BasicOffenseThinker : Thinker {
 
             }
             else if (i > 0){
-                Debug.Log("Think weak" + i);
+//                Debug.Log("Think weak" + i);
                 controller.AddToActionQueue(weakBarrage.commands);    
             }
             else{
-                Debug.Log("Think" + i);
+//                Debug.Log("Think" + i);
             }
 
         }

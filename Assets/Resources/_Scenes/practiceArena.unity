@@ -3557,13 +3557,19 @@ Prefab:
     - target: {fileID: 114211433341442782, guid: 3f6c6ff9384f04d3cb8942be663c77ed,
         type: 2}
       propertyPath: maxHp
-      value: 60
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114211433341442782, guid: 3f6c6ff9384f04d3cb8942be663c77ed,
         type: 2}
       propertyPath: maxMp
-      value: 60
+      value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 95503672179479896, guid: 3f6c6ff9384f04d3cb8942be663c77ed,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 4239d9eb81d60456987b2527d8fe41d1,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f6c6ff9384f04d3cb8942be663c77ed, type: 2}
   m_IsPrefabParent: 0
@@ -7962,9 +7968,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - {fileID: 114082700720365318, guid: 0bee59bad70414c428bcc63e0a5d93fc, type: 2}
+  enemiesList:
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
+  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
+  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
+  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
   enemySpawnPoint: {fileID: 588471123}
   enemyTempSpawnPoint: {fileID: 1253794673}
-  isPracticeLevel: 1
+  baseEnemy: {fileID: 114082700720365318, guid: 0bee59bad70414c428bcc63e0a5d93fc,
+    type: 2}
+  isPracticeLevel: 0
   spawnWaitTime: 1
 --- !u!4 &1563426053
 Transform:
@@ -8965,6 +8979,8 @@ MonoBehaviour:
   enemyVitalsUI: {fileID: 1435302516}
   particleSystemHolder: {fileID: 966319681}
   turnInterludeTime: 0.45
+  pauseTime: 0
+  pauseGame: 0
 --- !u!1 &1709924079
 GameObject:
   m_ObjectHideFlags: 0
@@ -10499,6 +10515,24 @@ Prefab:
       propertyPath: maxHp
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 114082700720365318, guid: 6d262f801acd7409b8245c0e5a619c35,
+        type: 2}
+      propertyPath: currentDrainRate
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 212379639889294280, guid: 6d262f801acd7409b8245c0e5a619c35,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024318207877708, guid: 6d262f801acd7409b8245c0e5a619c35, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861701085290656, guid: 6d262f801acd7409b8245c0e5a619c35, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d262f801acd7409b8245c0e5a619c35, type: 2}
   m_IsPrefabParent: 0
@@ -10846,6 +10880,8 @@ MonoBehaviour:
   enemyVitalsUI: {fileID: 2021967660}
   particleSystemHolder: {fileID: 0}
   turnInterludeTime: 0.5
+  pauseTime: 0
+  pauseGame: 0
 --- !u!1 &2138659817
 GameObject:
   m_ObjectHideFlags: 0

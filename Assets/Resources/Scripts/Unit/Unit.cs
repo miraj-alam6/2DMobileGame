@@ -47,6 +47,7 @@ public class Unit : MonoBehaviour {
     private bool _preventFireballs = false;
 
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     public float mp
     {
@@ -93,6 +94,7 @@ public class Unit : MonoBehaviour {
             vitalsUI = GameplayController.instance.enemyVitalsUI;
         }
         animator = Utility.GetChildByTag(transform,TagNames.UnitAnimator).GetComponent<Animator>();
+        spriteRenderer = Utility.GetChildByTag(transform, TagNames.UnitAnimator).GetComponent<SpriteRenderer>();
         if(!animator){
             Debug.LogError("You need an animator on this unit");
         }
@@ -294,5 +296,27 @@ public class Unit : MonoBehaviour {
                 collidedFireball.Explode(true);
             }
         }
+    }
+
+    public void LoadEnemyData(EnemyData enemyData){
+        animator.runtimeAnimatorController = enemyData.animatorController;
+        spriteRenderer.sprite = enemyData.sprite;
+        spriteRenderer.color = enemyData.color;
+        spriteRenderer.flipX = true;
+        AIController ai = GetComponent<AIController>();
+        this.maxHp = enemyData.MaxHP;
+        this.maxMp = enemyData.MaxMP;
+        this.maxSp = enemyData.MaxSP;
+        this._hp = maxHp;
+        this._mp = maxMp;
+        this.mpRegenRate = enemyData.MPRegenRate;
+        this.hpRegenRate = enemyData.HPRegenRate;
+        ai.attackThinker = enemyData.AttackThinker;
+        ai.defenseThinker = enemyData.DefenseThinker;
+        this.shieldBreakCooldownTime = enemyData.ShieldBreakCooldown;
+        this.shieldGeneralCooldownTime = enemyData.ShieldGeneralCooldown;
+        this.shieldOverpoweredCooldownTime = enemyData.ShieldOverpoweredCooldown;
+        vitalsUI.InitializeVitals(maxHp, maxMp);
+
     }
 }

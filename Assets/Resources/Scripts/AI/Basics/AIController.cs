@@ -19,9 +19,9 @@ public class AIController : MonoBehaviour {
     //objects. Check if that actually can be a problem for performance.
 
     public Unit unit;
+    public LayerMask fireballLayerMask;
+    public EnemyData enemyData;
 
-    public LayerMask layerMask;
-    public float rayDistance;
 	// Use this for initialization
 	void Start () {
         actionQueue = new Queue<Action_>();
@@ -29,7 +29,9 @@ public class AIController : MonoBehaviour {
         unit = GetComponent<Unit>(); //will use this to know if it is attacking or defending.
         //Unit does not have handle to AI, because unit is also used by the player
         GameplayController.instance.currentEnemy = unit;
-
+        if(enemyData){
+            unit.LoadEnemyData(enemyData);
+        }
 	}
 	
 	// Update is called once per frame
@@ -121,10 +123,11 @@ public class AIController : MonoBehaviour {
     }
 
 
-    public RaycastHit2D CheckRayCast()
+    public RaycastHit2D CheckRayCast(float rayDistance)
     {
         Debug.DrawRay(transform.position, (transform.right * -1).normalized * rayDistance, Color.red);
-        return Physics2D.Raycast(transform.position, transform.right * -1, rayDistance, layerMask);
+        return Physics2D.Raycast(transform.position, transform.right * -1, rayDistance, fireballLayerMask);
     }
+
 
 }

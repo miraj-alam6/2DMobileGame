@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 61992608590161040}
   - component: {fileID: 114176056438450178}
   m_Layer: 0
-  m_Name: Defense Grunt
+  m_Name: NOTUSEDANYMOREONLYONEENEMYPREFAB
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,6 +439,10 @@ MonoBehaviour:
   tempAction: {fileID: 11400000, guid: 9b31f93613f5343e1afba0e77ab10f2d, type: 2}
   tempWaitAction: {fileID: 11400000, guid: 4f57b7006bc5448ed8f4db456ca06cab, type: 2}
   unit: {fileID: 0}
+  fireballLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  enemyData: {fileID: 0}
 --- !u!114 &114287953508289484
 MonoBehaviour:
   m_ObjectHideFlags: 1

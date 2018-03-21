@@ -155,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 1200603079143204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4273020994742100}
   m_RootOrder: 0
@@ -439,6 +439,9 @@ MonoBehaviour:
   tempAction: {fileID: 11400000, guid: 9b31f93613f5343e1afba0e77ab10f2d, type: 2}
   tempWaitAction: {fileID: 11400000, guid: 4f57b7006bc5448ed8f4db456ca06cab, type: 2}
   unit: {fileID: 0}
+  fireballLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &114287953508289484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -481,6 +484,9 @@ MonoBehaviour:
   numberValue: 1
   damage: 1
   _unitID: 0
+  movingParticleSystem: {fileID: 0}
+  succcessParticleSystem: {fileID: 0}
+  failParticleSystem: {fileID: 0}
 --- !u!212 &212333749590261982
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -561,7 +567,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 824f7c56b34fe4d2eb08c54e961072e7, type: 3}
   m_Color: {r: 0.44827592, g: 1, b: 0, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.75, y: 0.953125}

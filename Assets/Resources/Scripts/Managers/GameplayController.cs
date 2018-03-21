@@ -23,6 +23,9 @@ public class GameplayController : MonoBehaviour {
     //destroyed when parent gets destroyed.
     public float turnInterludeTime = 0.5f;
     private float turnCurrentInterludeTime = 0;
+    public float pauseTime;
+    public float pauseGame;
+
 
     private void Awake(){
         currentFireballs = new List<Offense>();
