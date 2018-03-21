@@ -36,7 +36,7 @@ public class VitalsUI : MonoBehaviour {
 		
 	}
 
-    public void InitializeVitals(int maxHP, int maxMP){
+    public void InitializeVitals(float maxHP, float maxMP){
         //HPOuterBarTransform.rect.Set();
         HPOuterBarTransform.sizeDelta = new Vector2(maxHP * scale+outlineOffset, HPOuterBarTransform.sizeDelta.y);
         HPBackgroundBarTransform.sizeDelta = new Vector2(maxHP * scale, HPBackgroundBarTransform.sizeDelta.y);

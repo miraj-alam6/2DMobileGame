@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114652039068885272}
   - component: {fileID: 50301225738365510}
   - component: {fileID: 212986583352504590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyFireball3
   m_TagString: Fireball
   m_Icon: {fileID: 0}
@@ -165,6 +165,9 @@ MonoBehaviour:
   numberValue: 3
   damage: 3
   _unitID: 0
+  movingParticleSystem: {fileID: 0}
+  succcessParticleSystem: {fileID: 0}
+  failParticleSystem: {fileID: 0}
 --- !u!212 &212020486029618256
 SpriteRenderer:
   m_ObjectHideFlags: 1

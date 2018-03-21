@@ -18,8 +18,8 @@ public class Unit : MonoBehaviour {
     public Transform shieldLocation;
     public Direction facing;
 
-    public int maxHp;
-    public int maxMp;
+    public float maxHp;
+    public float maxMp;
     [SerializeField]
     private float _hp;
     [SerializeField]
@@ -157,7 +157,7 @@ public class Unit : MonoBehaviour {
             vitalsUI.UpdateVitals(VitalName.MP,mp,maxMp);
         }
         else{
-            Debug.Log("There is no UI element for this Unit and its vital update. Please check if this was intentional");
+            Debug.LogWarning("There is no UI element for this Unit and its vital update. Please check if this was intentional");
         }
         if(mp <= 0.1 & usingShield){
             stopShield();

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114038762236206420}
   - component: {fileID: 50243465589033922}
   - component: {fileID: 212930865249201604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyFireball1
   m_TagString: Fireball
   m_Icon: {fileID: 0}
@@ -151,6 +151,9 @@ MonoBehaviour:
   numberValue: 1
   damage: 1
   _unitID: 0
+  movingParticleSystem: {fileID: 0}
+  succcessParticleSystem: {fileID: 0}
+  failParticleSystem: {fileID: 0}
 --- !u!114 &114951766091961060
 MonoBehaviour:
   m_ObjectHideFlags: 1
