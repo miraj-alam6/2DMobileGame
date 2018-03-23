@@ -23,9 +23,9 @@ public class GameplayController : MonoBehaviour {
     //destroyed when parent gets destroyed.
     public float turnInterludeTime = 0.5f;
     private float turnCurrentInterludeTime = 0;
-    public float pauseTime;
-    public float pauseGame;
-
+    public bool pauseTime;
+    public bool pauseGame;
+    public CanvasGroup pauseMenu;
 
     private void Awake(){
         currentFireballs = new List<Offense>();
@@ -38,13 +38,15 @@ public class GameplayController : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        
+        UnpauseGame();
         if (player.currentTurnType == TurnType.Attack)
         {
 //            defenseButtons.alpha = 0;
-            defenseButtons.alpha = 0.5f;
-            defenseButtons.interactable = false;
-            defenseButtons.blocksRaycasts = false;
+            //defenseButtons.alpha = 0.5f;
+            //defenseButtons.interactable = false;
+            //defenseButtons.blocksRaycasts = false;
+            turnOffCanvasGroup(defenseButtons,Constants.InactiveButtonAlpha);
+            turnOnCanvasGroup(attackButtons);
             attackButtons.alpha = 1;
             attackButtons.interactable = true;
             attackButtons.blocksRaycasts = true;
@@ -53,12 +55,14 @@ public class GameplayController : MonoBehaviour {
         else if (player.currentTurnType == TurnType.Defense)
         {
             //attackButtons.alpha = 0;
-            attackButtons.alpha = 0.5f;
-            attackButtons.interactable = false;
-            attackButtons.blocksRaycasts = false;
-            defenseButtons.alpha = 1;
-            defenseButtons.interactable = true;
-            defenseButtons.blocksRaycasts = true;
+            //attackButtons.alpha = 0.5f;
+            //attackButtons.interactable = false;
+            //attackButtons.blocksRaycasts = false;
+            turnOffCanvasGroup(attackButtons,Constants.InactiveButtonAlpha);
+            //defenseButtons.alpha = 1;
+            //defenseButtons.interactable = true;
+            //defenseButtons.blocksRaycasts = true;
+            turnOnCanvasGroup(defenseButtons);
 
         }
         maxTimeBarWidth = timeBarTransform.sizeDelta.x;
@@ -186,12 +190,14 @@ public class GameplayController : MonoBehaviour {
     public void switchPlayerToAttackDeux()
     {
         player.currentTurnType = TurnType.Attack;
-        defenseButtons.alpha = 0.5f;
-        defenseButtons.interactable = false;
-        defenseButtons.blocksRaycasts = false;
-        attackButtons.alpha = 1;
-        attackButtons.interactable = true;
-        attackButtons.blocksRaycasts = true;
+        //defenseButtons.alpha = 0.5f;
+        //defenseButtons.interactable = false;
+        //defenseButtons.blocksRaycasts = false;
+        turnOffCanvasGroup(defenseButtons,Constants.InactiveButtonAlpha);
+        //attackButtons.alpha = 1;
+        //attackButtons.interactable = true;
+        //attackButtons.blocksRaycasts = true;
+        turnOnCanvasGroup(attackButtons);
         player.stopShield();
         player.preventFireballs = false;
         currentEnemy.currentTurnType = TurnType.Defense;
@@ -199,15 +205,40 @@ public class GameplayController : MonoBehaviour {
     public void switchPlayerToDefenseDeux()
     {
         player.currentTurnType = TurnType.Defense;
-        attackButtons.alpha = 0.5f;
-        attackButtons.interactable = false;
-        attackButtons.blocksRaycasts = false;
-        defenseButtons.alpha = 1;
-        defenseButtons.interactable = true;
-        defenseButtons.blocksRaycasts = true;
+        //attackButtons.alpha = 0.5f;
+        //attackButtons.interactable = false;
+        //attackButtons.blocksRaycasts = false;
+        turnOffCanvasGroup(attackButtons);
+        //defenseButtons.alpha = 1;
+        //defenseButtons.interactable = true;
+        //defenseButtons.blocksRaycasts = true;
+        turnOnCanvasGroup(defenseButtons);
         currentEnemy.preventFireballs = false;
         currentEnemy.currentTurnType = TurnType.Attack;
 
+    }
+    public void turnOnCanvasGroup(CanvasGroup cG){
+        cG.alpha = 1;
+        cG.interactable = true;
+        cG.blocksRaycasts = true;
+    }
+    public void turnOnCanvasGroup(CanvasGroup cG,float alpha)
+    {
+        cG.alpha = alpha;
+        cG.interactable = true;
+        cG.blocksRaycasts = true;
+    }
+    public void turnOffCanvasGroup(CanvasGroup cG)
+    {
+        cG.alpha = 0;
+        cG.interactable = false;
+        cG.blocksRaycasts = false;
+    }
+    public void turnOffCanvasGroup(CanvasGroup cG, float alpha)
+    {
+        cG.alpha = alpha;
+        cG.interactable = false;
+        cG.blocksRaycasts = false;
     }
     public int GetNextUnitID(){
         return ++lastUnitID;
@@ -224,5 +255,20 @@ public class GameplayController : MonoBehaviour {
       //  print("Fireballs left: "+currentFireballs.Count);
     }
 
+    public void PauseGame(){
+        print("Paused Game");
+        Time.timeScale = 0;
+        turnOnCanvasGroup(pauseMenu,0.7f);
+        pauseGame = true;
+    }
+    public void UnpauseGame()
+    {
+        print("Unpaused the game");
+        pauseGame = false;
+        Time.timeScale = 1.0f;
+        turnOffCanvasGroup(pauseMenu);
+
+
+    }
    
 }

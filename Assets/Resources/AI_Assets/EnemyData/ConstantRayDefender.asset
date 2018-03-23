@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackThinker: {fileID: 11400000, guid: 56cbb8737c6054d119f70c652f5adc15, type: 2}
   DefenseThinker: {fileID: 11400000, guid: e0b415a236a3c492bb63609a955017ba, type: 2}
-  MaxHP: 15
+  MaxHP: 20
   MaxMP: 20
   HPRegenRate: 0
   MPRegenRate: 2

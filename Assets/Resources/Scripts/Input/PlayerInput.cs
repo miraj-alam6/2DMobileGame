@@ -18,8 +18,10 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
 		
 	}
-
+    //NOTE:the buttons are still active when game is paused, but the pause menu physically blocks player
+    //from pressing them while the game is paused
     public void fireballButton1(){
+        
         playerUnit.shootFireball(1);
     }
     public void fireballButton2()
