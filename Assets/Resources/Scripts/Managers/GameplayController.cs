@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameplayController : MonoBehaviour {
     public Unit player;
@@ -27,6 +29,7 @@ public class GameplayController : MonoBehaviour {
     public bool pauseGame;
     public CanvasGroup pauseMenu;
 
+
     private void Awake(){
         currentFireballs = new List<Offense>();
         if(instance){
@@ -39,6 +42,10 @@ public class GameplayController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         UnpauseGame();
+        //Player is set from the inspector
+        if(GameDataController.instance){
+            GameDataController.instance.LoadDataIntoPlayer(player);
+        }
         if (player.currentTurnType == TurnType.Attack)
         {
 //            defenseButtons.alpha = 0;
@@ -269,6 +276,10 @@ public class GameplayController : MonoBehaviour {
         turnOffCanvasGroup(pauseMenu);
 
 
+    }
+
+    public void RestartLevel(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
    
 }

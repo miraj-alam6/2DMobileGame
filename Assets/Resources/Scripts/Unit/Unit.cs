@@ -86,21 +86,8 @@ public class Unit : MonoBehaviour {
     public float currentDrainRate = 0.5f;
 	// Use this for initialization
 	void Start () {
-        unitID = GameplayController.instance.GetNextUnitID();
-        if(gameObject.CompareTag(TagNames.Player)){
-            vitalsUI = GameplayController.instance.playerVitalsUI;
-        }
-        else{
-            vitalsUI = GameplayController.instance.enemyVitalsUI;
-        }
-        animator = Utility.GetChildByTag(transform,TagNames.UnitAnimator).GetComponent<Animator>();
-        spriteRenderer = Utility.GetChildByTag(transform, TagNames.UnitAnimator).GetComponent<SpriteRenderer>();
-        if(!animator){
-            Debug.LogError("You need an animator on this unit");
-        }
-        _hp = maxHp;
-        _mp = maxMp;
-        vitalsUI.InitializeVitals(maxHp, maxMp);
+        print("Happens 1");
+        InitializeUnit();
 	}
 	
     //This sets the direction the fireball will move as well as its ID
@@ -275,6 +262,9 @@ public class Unit : MonoBehaviour {
         if(!(gameObject.CompareTag(TagNames.Player))){
             GameplayController.instance.levelController.spawnNextEnemy();
         }
+        else{
+            GameplayController.instance.Invoke("RestartLevel",1f);
+        }
 
     }
 
@@ -318,5 +308,25 @@ public class Unit : MonoBehaviour {
         this.shieldOverpoweredCooldownTime = enemyData.ShieldOverpoweredCooldown;
         vitalsUI.InitializeVitals(maxHp, maxMp);
 
+    }
+    public void InitializeUnit(){
+        unitID = GameplayController.instance.GetNextUnitID();
+        if (gameObject.CompareTag(TagNames.Player))
+        {
+            vitalsUI = GameplayController.instance.playerVitalsUI;
+        }
+        else
+        {
+            vitalsUI = GameplayController.instance.enemyVitalsUI;
+        }
+        animator = Utility.GetChildByTag(transform, TagNames.UnitAnimator).GetComponent<Animator>();
+        spriteRenderer = Utility.GetChildByTag(transform, TagNames.UnitAnimator).GetComponent<SpriteRenderer>();
+        if (!animator)
+        {
+            Debug.LogError("You need an animator on this unit");
+        }
+        _hp = maxHp;
+        _mp = maxMp;
+        vitalsUI.InitializeVitals(maxHp, maxMp);
     }
 }
