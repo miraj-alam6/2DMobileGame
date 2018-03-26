@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53f4c6554a8c644b48c9705883748a29, type: 3}
-  m_Name: ConstantRayDefender
+  m_Name: JuniorRayDefende
   m_EditorClassIdentifier: 
   AttackThinker: {fileID: 11400000, guid: 56cbb8737c6054d119f70c652f5adc15, type: 2}
-  DefenseThinker: {fileID: 11400000, guid: e0b415a236a3c492bb63609a955017ba, type: 2}
-  MaxHP: 25
-  MaxMP: 25
+  DefenseThinker: {fileID: 11400000, guid: b4c7c84a9d7a0407fb9525cad3d5cd33, type: 2}
+  MaxHP: 20
+  MaxMP: 20
   HPRegenRate: 0
   MPRegenRate: 2
   MaxSP: 10
@@ -23,4 +23,4 @@ MonoBehaviour:
   ShieldOverpoweredCooldown: 0.1
   animatorController: {fileID: 9100000, guid: c7a0f1aad25db4ce58ca9c83ed22dbc5, type: 2}
   sprite: {fileID: 21300000, guid: e3d0ca39fd3a2470f8a51076504aa4fb, type: 3}
-  color: {r: 1, g: 0.26896554, b: 0, a: 1}
+  color: {r: 0, g: 0.66896534, b: 1, a: 1}

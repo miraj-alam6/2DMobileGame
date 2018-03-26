@@ -9,19 +9,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5790558da9dec49d187974d3fd41275b, type: 3}
-  m_Name: RaycastDefender
+  m_Name: RaycastDefender2
   m_EditorClassIdentifier: 
   canThink: 1
   lookDistance: 3
   shield1:
     action: {fileID: 11400000, guid: 6d8469b0cf8554b03bb81eeb6d95483d, type: 2}
-    waitTime: 0.5
+    waitTime: 0
   shield2:
     action: {fileID: 11400000, guid: 31895a4dea91345cfa2c29bc288e8f15, type: 2}
-    waitTime: 0.5
+    waitTime: 0
   shield3:
     action: {fileID: 11400000, guid: e785d21d71a5a4b6e9aa95ff16abfa45, type: 2}
-    waitTime: 0.5
+    waitTime: 0
   stopShield:
     action: {fileID: 11400000, guid: a7ba1707812fb4e249d9b2fbbef158de, type: 2}
+    waitTime: 0.1
+  idle:
+    action: {fileID: 11400000, guid: 93721df0fb0a24552a4b85191051f99b, type: 2}
+    waitTime: 0.1
+  smartShield: 1
+  waitInterval: 0.01
+  commandArr:
+  - action: {fileID: 11400000, guid: 93721df0fb0a24552a4b85191051f99b, type: 2}
+    waitTime: 0.1
+  - action: {fileID: 11400000, guid: a7ba1707812fb4e249d9b2fbbef158de, type: 2}
     waitTime: 0.1

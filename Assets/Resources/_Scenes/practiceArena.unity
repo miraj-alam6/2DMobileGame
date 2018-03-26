@@ -11071,35 +11071,25 @@ MonoBehaviour:
   enemyList:
   - {fileID: 114082700720365318, guid: 0bee59bad70414c428bcc63e0a5d93fc, type: 2}
   enemiesList:
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
-  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
-  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
-  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
   - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
   - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
   - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
-  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
   - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
-  - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
+  - {fileID: 11400000, guid: 6cd2b7a9537254d3aa3a0c17b9353137, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
+  - {fileID: 11400000, guid: 6cd2b7a9537254d3aa3a0c17b9353137, type: 2}
+  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
+  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
+  - {fileID: 11400000, guid: d74df37515e4d4c62900f37bec99a665, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
+  - {fileID: 11400000, guid: 6cd2b7a9537254d3aa3a0c17b9353137, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
+  - {fileID: 11400000, guid: 0129bc212edee4437bf38c0b70983690, type: 2}
   - {fileID: 11400000, guid: 2b3b7be9c2b6741b8a8fe4edbab22e8a, type: 2}
   enemySpawnPoint: {fileID: 588471123}
   enemyTempSpawnPoint: {fileID: 1253794673}
@@ -12231,6 +12221,7 @@ MonoBehaviour:
   pauseTime: 0
   pauseGame: 0
   pauseMenu: {fileID: 485437036}
+  iterationDebugger: 0
 --- !u!1 &1709924079
 GameObject:
   m_ObjectHideFlags: 0
@@ -14440,6 +14431,7 @@ MonoBehaviour:
   pauseTime: 0
   pauseGame: 0
   pauseMenu: {fileID: 0}
+  iterationDebugger: 0
 --- !u!1 &2138659817
 GameObject:
   m_ObjectHideFlags: 0

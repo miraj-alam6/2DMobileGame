@@ -22,6 +22,7 @@ public class AIController : MonoBehaviour {
     public LayerMask fireballLayerMask;
     public EnemyData enemyData;
 
+
 	// Use this for initialization
 	void Start () {
         actionQueue = new Queue<Action_>();
@@ -59,7 +60,7 @@ public class AIController : MonoBehaviour {
                 }
                 //This is defense thinking
                 else{
-                    if (defenseThinker && defenseThinker.canThink)
+                    if (defenseThinker && defenseThinker.canThink && !thinking)
                     {
                         thinking = true;
                         defenseThinker.Think(this);
@@ -111,6 +112,10 @@ public class AIController : MonoBehaviour {
         }
 
     }
+    public void AddSingleToActionQueue(Command command)
+    {
+            commandQueue.Enqueue(command);
+    }
     public void ClearActionQueue(){
         thinking = false;
         waitTime = 0;
@@ -125,9 +130,21 @@ public class AIController : MonoBehaviour {
 
     public RaycastHit2D CheckRayCast(float rayDistance)
     {
-        Debug.DrawRay(transform.position, (transform.right * -1).normalized * rayDistance, Color.red);
-        return Physics2D.Raycast(transform.position, transform.right * -1, rayDistance, fireballLayerMask);
+        if(this){
+            Debug.DrawRay(transform.position, (transform.right * -1).normalized * rayDistance, Color.red);
+            return Physics2D.Raycast(transform.position, transform.right * -1, rayDistance, fireballLayerMask);
+        }
+        return new RaycastHit2D(); //Need to return this if this is null. That's possible only when the 
+        //object is being destroyed
+
     }
 
+    //This will increase the wait time of current action so that it does not end.
+    //It only does this if the action is close to ending
+    public void ExtendWait(float threshold, float timeToAdd){
 
+        if(waitTime < threshold){
+            waitTime += timeToAdd;
+        }
+    }
 }

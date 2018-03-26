@@ -29,6 +29,7 @@ public class GameplayController : MonoBehaviour {
     public bool pauseGame;
     public CanvasGroup pauseMenu;
 
+    public int iterationDebugger;
 
     private void Awake(){
         currentFireballs = new List<Offense>();
@@ -99,6 +100,9 @@ public class GameplayController : MonoBehaviour {
         else{
             reduceTime();
         }
+
+        //
+        print(iterationDebugger);
 	}
     //No parameters
     public void reduceTime(){

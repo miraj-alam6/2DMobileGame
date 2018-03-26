@@ -86,7 +86,7 @@ public class Unit : MonoBehaviour {
     public float currentDrainRate = 0.5f;
 	// Use this for initialization
 	void Start () {
-        print("Happens 1");
+//        print("Happens 1");
         InitializeUnit();
 	}
 	
