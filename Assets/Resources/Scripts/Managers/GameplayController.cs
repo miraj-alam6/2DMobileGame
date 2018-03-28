@@ -11,6 +11,9 @@ public class GameplayController : MonoBehaviour {
     public float turnTime;
     public float turnTimeLeft;
     public RectTransform timeBarTransform;
+    public Text playerTurnStatusText;
+    public Text enemyTurnStatusText;
+
     public CanvasGroup attackButtons;
     public CanvasGroup defenseButtons;
     private float maxTimeBarWidth;
@@ -82,10 +85,14 @@ public class GameplayController : MonoBehaviour {
 	void Update () {
         if(turnTimeLeft <= 0.00001){
             if(currentFireballs.Count <= 0){
-                turnCurrentInterludeTime -= Time.deltaTime;
                 if(player){
-                    if(currentEnemy && !currentEnemy.spawning && turnCurrentInterludeTime <=0.0001f){
-                        turnSwitch(); 
+                    if(currentEnemy && !currentEnemy.spawning){
+                        if(turnCurrentInterludeTime <= 0.0001f){
+                            turnSwitch(); 
+                        }
+                        else{
+                            turnCurrentInterludeTime -= Time.deltaTime;
+                        }
                     }
                     else{
                         //TODO: Spawn the next enemy, right now this is being done in a different way
@@ -102,7 +109,7 @@ public class GameplayController : MonoBehaviour {
         }
 
         //
-        print(iterationDebugger);
+//        print(iterationDebugger);
 	}
     //No parameters
     public void reduceTime(){
@@ -165,10 +172,25 @@ public class GameplayController : MonoBehaviour {
             if (player.currentTurnType == TurnType.Attack){
                 //switchPlayerToDefense();
                 switchPlayerToDefenseDeux();
+                timeBarTransform.anchorMin = new Vector2(0, 0.5f);
+                timeBarTransform.anchorMax = new Vector2(0, 0.5f);
+                timeBarTransform.pivot = new Vector2(0, 0.5f);
+
+                playerTurnStatusText.text = "DEF";
+                enemyTurnStatusText.text = "ATK";
+
             }
             else{
                 //switchPlayerToAttack();
                 switchPlayerToAttackDeux();
+                playerTurnStatusText.text = "ATK";
+                enemyTurnStatusText.text = "DEF";
+                timeBarTransform.anchorMin = new Vector2(1, 0.5f);
+                timeBarTransform.anchorMax = new Vector2(1, 0.5f);
+                timeBarTransform.pivot = new Vector2(1, 0.5f);
+           
+
+
             }
 
         }

@@ -846,11 +846,11 @@ RectTransform:
   m_Father: {fileID: 884607747}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 590, y: 40}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &112734223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,6 +1481,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 249742441}
+--- !u!1 &253575615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 253575616}
+  m_Layer: 0
+  m_Name: PlayerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &253575616
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 253575615}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.75, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1732493497}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &258146157
 GameObject:
   m_ObjectHideFlags: 0
@@ -4894,6 +4922,11 @@ Prefab:
       value: 
       objectReference: {fileID: 22100000, guid: 4239d9eb81d60456987b2527d8fe41d1,
         type: 2}
+    - target: {fileID: 114211433341442782, guid: 3f6c6ff9384f04d3cb8942be663c77ed,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f6c6ff9384f04d3cb8942be663c77ed, type: 2}
   m_IsPrefabParent: 0
@@ -7689,6 +7722,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074a9fedbfad04730901b29658998692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1155811821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1155811817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bc5023a831e475a96d57e357b4de69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preEntranceTime: 1
+  postEntranceTime: 0.2
+  speed: 2
+  startTransform: {fileID: 253575616}
+  endTransform: {fileID: 1443338355}
 --- !u!1 &1176988866
 GameObject:
   m_ObjectHideFlags: 0
@@ -8648,7 +8697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253794673}
   m_Layer: 0
-  m_Name: EnemyTempSpawnPoint
+  m_Name: EnemyGameplayPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9952,6 +10001,34 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1443338354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1443338355}
+  m_Layer: 0
+  m_Name: PlayerGameplayPostion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1443338355
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1443338354}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.75, y: -0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1732493497}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1448923098
 GameObject:
   m_ObjectHideFlags: 0
@@ -12211,8 +12288,6 @@ MonoBehaviour:
   turnTime: 3
   turnTimeLeft: 0
   timeBarTransform: {fileID: 112734222}
-  playerTurnStatusText: {fileID: 454900939}
-  enemyTurnStatusText: {fileID: 500912284}
   attackButtons: {fileID: 1547361507}
   defenseButtons: {fileID: 1961271349}
   levelController: {fileID: 0}
@@ -12353,6 +12428,8 @@ Transform:
   - {fileID: 1253794673}
   - {fileID: 588471123}
   - {fileID: 966319681}
+  - {fileID: 253575616}
+  - {fileID: 1443338355}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14423,8 +14500,6 @@ MonoBehaviour:
   turnTime: 3
   turnTimeLeft: 0
   timeBarTransform: {fileID: 1860417630}
-  playerTurnStatusText: {fileID: 0}
-  enemyTurnStatusText: {fileID: 0}
   attackButtons: {fileID: 1898117809}
   defenseButtons: {fileID: 235595395}
   levelController: {fileID: 0}
