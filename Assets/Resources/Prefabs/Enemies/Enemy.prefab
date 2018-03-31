@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 114082700720365318}
   - component: {fileID: 61992608590161040}
   - component: {fileID: 114176056438450178}
+  - component: {fileID: 114769446195694952}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -418,7 +419,8 @@ MonoBehaviour:
   shieldOverpoweredCooldownTime: 0.1
   shieldBreakCooldownTime: 1
   currentShield: {fileID: 0}
-  currentTurnType: 1
+  currentTurnType: 2
+  _preventFireballs: 0
   currentDrainRate: 0.5
 --- !u!114 &114176056438450178
 MonoBehaviour:
@@ -442,6 +444,7 @@ MonoBehaviour:
   fireballLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  enemyData: {fileID: 0}
 --- !u!114 &114287953508289484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -470,6 +473,25 @@ MonoBehaviour:
   speed: 5
   direction: 2
   rb2D: {fileID: 0}
+--- !u!114 &114769446195694952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1861701085290656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bc5023a831e475a96d57e357b4de69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preEntranceTime: 0.2
+  postEntranceTime: 0.2
+  speed: 2
+  startTransform: {fileID: 4343099096370094, guid: 59aaaa8091d9d4a699b0623c38368e65,
+    type: 2}
+  endTransform: {fileID: 4610642265294358, guid: 27b8bf2872a5d4652ba17b9bd5caf53d,
+    type: 2}
+  entranceDone: 1
 --- !u!114 &114950251850553080
 MonoBehaviour:
   m_ObjectHideFlags: 1

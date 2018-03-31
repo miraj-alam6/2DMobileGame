@@ -18,7 +18,12 @@ public class LevelController: MonoBehaviour {
         GameplayController.instance.levelController = this;
         //spawnNextEnemy();
         if(!isPracticeLevel){
-        nextEnemySpawn(); //this happens instantly, so do this in beginning for now. Band-aid solution,
+            if(GameplayController.instance.entranceOn){
+               // Invoke("nextEnemySpawn",3);  
+            }
+            else{
+                nextEnemySpawn(); //this happens instantly, so do this in beginning for now. Band-aid solution,
+            }
         }            //not how it will work in game
 
 	}

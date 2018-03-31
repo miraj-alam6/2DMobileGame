@@ -164,6 +164,8 @@ GameObject:
   - component: {fileID: 114211433341442782}
   - component: {fileID: 114921779239387836}
   - component: {fileID: 61687722866456042}
+  - component: {fileID: 114570849546645898}
+  - component: {fileID: 114640675137702302}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -497,8 +499,8 @@ Transform:
   m_Children:
   - {fileID: 4053839126187366}
   - {fileID: 4361069340903682}
-  - {fileID: 4813606341760596}
   - {fileID: 4944199436418182}
+  - {fileID: 4813606341760596}
   m_Father: {fileID: 4646386712281886}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -612,7 +614,7 @@ Transform:
   m_Children:
   - {fileID: 4115789260432382}
   m_Father: {fileID: 4453063164629758}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4857622023238234
 Transform:
@@ -639,7 +641,7 @@ Transform:
   m_Children:
   - {fileID: 4765260387958148}
   m_Father: {fileID: 4453063164629758}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50421152116538046
 Rigidbody2D:
@@ -972,7 +974,7 @@ Animator:
   m_GameObject: {fileID: 1975301502824254}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c7a0f1aad25db4ce58ca9c83ed22dbc5, type: 2}
+  m_Controller: {fileID: 22100000, guid: 4239d9eb81d60456987b2527d8fe41d1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1169,6 +1171,9 @@ MonoBehaviour:
   numberValue: 1
   damage: 1
   _unitID: 0
+  movingParticleSystem: {fileID: 0}
+  succcessParticleSystem: {fileID: 0}
+  failParticleSystem: {fileID: 0}
 --- !u!114 &114211433341442782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1238,6 +1243,20 @@ MonoBehaviour:
   numberValue: 1
   damage: 1
   _unitID: 0
+  movingParticleSystem: {fileID: 0}
+  succcessParticleSystem: {fileID: 0}
+  failParticleSystem: {fileID: 0}
+--- !u!114 &114570849546645898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662537024894380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074a9fedbfad04730901b29658998692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114615650903126604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1266,6 +1285,23 @@ MonoBehaviour:
   numberValue: 3
   drainRate: 7
   unit: {fileID: 0}
+--- !u!114 &114640675137702302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662537024894380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bc5023a831e475a96d57e357b4de69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preEntranceTime: 1
+  postEntranceTime: 0.2
+  speed: 2
+  startTransform: {fileID: 0}
+  endTransform: {fileID: 0}
+  entranceDone: 1
 --- !u!114 &114734387090521944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1280,6 +1316,9 @@ MonoBehaviour:
   numberValue: 3
   damage: 1
   _unitID: 0
+  movingParticleSystem: {fileID: 0}
+  succcessParticleSystem: {fileID: 0}
+  failParticleSystem: {fileID: 0}
 --- !u!114 &114744029681684772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1322,6 +1361,9 @@ MonoBehaviour:
   numberValue: 2
   damage: 1
   _unitID: 0
+  movingParticleSystem: {fileID: 0}
+  succcessParticleSystem: {fileID: 0}
+  failParticleSystem: {fileID: 0}
 --- !u!114 &114921779239387836
 MonoBehaviour:
   m_ObjectHideFlags: 1

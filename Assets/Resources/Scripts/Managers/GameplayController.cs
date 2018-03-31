@@ -28,9 +28,11 @@ public class GameplayController : MonoBehaviour {
     //destroyed when parent gets destroyed.
     public float turnInterludeTime = 0.5f;
     private float turnCurrentInterludeTime = 0;
-    public bool pauseTime;
+    public bool lightPause; //Stop the timer but not for actually pausing the game. Mainly for things to happen like spawning
     public bool pauseGame;
     public CanvasGroup pauseMenu;
+
+    public bool entranceOn = false;
 
     public int iterationDebugger;
 
@@ -41,6 +43,7 @@ public class GameplayController : MonoBehaviour {
         }
         else{
             instance = this;
+
         }
     }
     // Use this for initialization
@@ -50,31 +53,39 @@ public class GameplayController : MonoBehaviour {
         if(GameDataController.instance){
             GameDataController.instance.LoadDataIntoPlayer(player);
         }
-        if (player.currentTurnType == TurnType.Attack)
-        {
-//            defenseButtons.alpha = 0;
-            //defenseButtons.alpha = 0.5f;
-            //defenseButtons.interactable = false;
-            //defenseButtons.blocksRaycasts = false;
-            turnOffCanvasGroup(defenseButtons,Constants.InactiveButtonAlpha);
-            turnOnCanvasGroup(attackButtons);
-            attackButtons.alpha = 1;
-            attackButtons.interactable = true;
-            attackButtons.blocksRaycasts = true;
 
+        if(entranceOn){
+            player.currentTurnType = TurnType.Standby;
+            player.preventFireballs = true;
+            lightPause = true;
         }
-        else if (player.currentTurnType == TurnType.Defense)
-        {
-            //attackButtons.alpha = 0;
-            //attackButtons.alpha = 0.5f;
-            //attackButtons.interactable = false;
-            //attackButtons.blocksRaycasts = false;
-            turnOffCanvasGroup(attackButtons,Constants.InactiveButtonAlpha);
-            //defenseButtons.alpha = 1;
-            //defenseButtons.interactable = true;
-            //defenseButtons.blocksRaycasts = true;
-            turnOnCanvasGroup(defenseButtons);
+        else{
+            if (player.currentTurnType == TurnType.Attack)
+            {
+    //            defenseButtons.alpha = 0;
+                //defenseButtons.alpha = 0.5f;
+                //defenseButtons.interactable = false;
+                //defenseButtons.blocksRaycasts = false;
+                turnOffCanvasGroup(defenseButtons,Constants.InactiveButtonAlpha);
+                turnOnCanvasGroup(attackButtons);
+                attackButtons.alpha = 1;
+                attackButtons.interactable = true;
+                attackButtons.blocksRaycasts = true;
 
+            }
+            else if (player.currentTurnType == TurnType.Defense)
+            {
+                //attackButtons.alpha = 0;
+                //attackButtons.alpha = 0.5f;
+                //attackButtons.interactable = false;
+                //attackButtons.blocksRaycasts = false;
+                turnOffCanvasGroup(attackButtons,Constants.InactiveButtonAlpha);
+                //defenseButtons.alpha = 1;
+                //defenseButtons.interactable = true;
+                //defenseButtons.blocksRaycasts = true;
+                turnOnCanvasGroup(defenseButtons);
+
+            }
         }
         maxTimeBarWidth = timeBarTransform.sizeDelta.x;
         turnTimeLeft = turnTime;
@@ -86,7 +97,9 @@ public class GameplayController : MonoBehaviour {
         if(turnTimeLeft <= 0.00001){
             if(currentFireballs.Count <= 0){
                 if(player){
-                    if(currentEnemy && !currentEnemy.spawning){
+                    if(currentEnemy && !currentEnemy.spawning && 
+                       (!entranceOn || currentEnemy.entrance.entranceDone))
+                    {
                         if(turnCurrentInterludeTime <= 0.0001f){
                             turnSwitch(); 
                         }
@@ -105,7 +118,15 @@ public class GameplayController : MonoBehaviour {
             
         }
         else{
-            reduceTime();
+            if (lightPause && player && player.currentTurnType == TurnType.Standby)
+                //The second two conditions are there because we want to pause time reduction during
+                //only the intro. once an enemy dies we want time to continue
+            {
+                
+            }
+            else{
+                reduceTime();
+            }
         }
 
         //
@@ -205,7 +226,12 @@ public class GameplayController : MonoBehaviour {
         attackButtons.blocksRaycasts = true;
         player.stopShield();
         player.preventFireballs = false;
-        currentEnemy.currentTurnType = TurnType.Defense;
+        if(currentEnemy.entrance.entranceDone){
+            currentEnemy.currentTurnType = TurnType.Defense;
+        }
+        else{
+            currentEnemy.currentTurnType = TurnType.Standby;
+        }
     }
     public void switchPlayerToDefense(){
         player.currentTurnType = TurnType.Defense;
@@ -216,7 +242,14 @@ public class GameplayController : MonoBehaviour {
         defenseButtons.interactable = true;
         defenseButtons.blocksRaycasts = true;
         currentEnemy.preventFireballs = false;
-        currentEnemy.currentTurnType = TurnType.Attack;
+        if (currentEnemy.entrance.entranceDone)
+        {
+            currentEnemy.currentTurnType = TurnType.Attack;
+        }
+        else{
+            currentEnemy.currentTurnType = TurnType.Standby;
+
+        }
 
     }
 
@@ -300,12 +333,67 @@ public class GameplayController : MonoBehaviour {
         pauseGame = false;
         Time.timeScale = 1.0f;
         turnOffCanvasGroup(pauseMenu);
+    }
 
+    //This doesn't fully pause the game but it prevents timer from going down as well as actions
+    public void LightPause(){
+        
+    }
 
+    public void LightUnpause(){
+        
     }
 
     public void RestartLevel(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void FinishSpawning(string tagName){
+        if(lightPause){
+            //If player spawns (which is in the beginning), then spawn the first enemy next.
+            if(tagName.Equals(TagNames.Player)){
+                levelController.nextEnemySpawn();         
+            }
+            else{
+                
+
+            }
+        }
+
+        if (player && currentEnemy && player.entrance.entranceDone
+            && currentEnemy.entrance.entranceDone)
+        {
+            lightPause = false;
+            //first turn of the game
+            if(player.currentTurnType == TurnType.Standby && currentEnemy.currentTurnType 
+               == TurnType.Standby){
+                player.currentTurnType = TurnType.Attack;
+                player.preventFireballs = false;
+                currentEnemy.currentTurnType = TurnType.Defense;
+            }
+            else{ //only need to set enemy's turn type
+
+                if ( player.currentTurnType == TurnType.Attack)
+                {
+
+                    currentEnemy.currentTurnType = TurnType.Defense;
+                    player.preventFireballs = true;
+
+                }
+                    else{
+                    currentEnemy.currentTurnType = TurnType.Attack;
+                    player.preventFireballs = false;
+                }
+            }
+        }
+       
+    }
+
+    public void SpawnNextEnemy(){
+        if(entranceOn){
+            lightPause = true;
+        }
+        levelController.spawnNextEnemy();
     }
    
 }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour {
+public class Unit : MonoBehaviour
+{
 
     private int unitID = 0;
     public string unitName;
@@ -24,16 +25,16 @@ public class Unit : MonoBehaviour {
     private float _hp;
     [SerializeField]
     private float _mp;
-    public float hpRegenRate =0;
+    public float hpRegenRate = 0;
     public float mpRegenRate;
 
     public float maxSp = 10;
-    public float sp =10;
+    public float sp = 10;
     [SerializeField]
     private VitalsUI vitalsUI; //Still keep this public for Player, but not for Enemy
 
     public bool usingShield; //not sure if necessary. Currently is being used in code, but that itself may not be necessary
-    public bool canUseShield=true;
+    public bool canUseShield = true;
     public float shieldGeneralCooldownTime = 0.1f; //Cooldown time when you run out of MP or when you let go of one shield 
     public float shieldOverpoweredCooldownTime = 0.1f; //cooldown time when an offense is higher than your shield
     public float shieldBreakCooldownTime = 1f; //cooldown time for when you can use shield again when shield is broken
@@ -44,11 +45,17 @@ public class Unit : MonoBehaviour {
 
     private Offense collidedFireball;
     private bool _spawning = false;
+    [SerializeField]
     private bool _preventFireballs = false;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-
+    private Entrance _entrance;
+    public Entrance entrance{
+        get{
+            return _entrance;
+        }
+    }
     public float mp
     {
         get
@@ -260,7 +267,7 @@ public class Unit : MonoBehaviour {
         //because levelController itself has a wait time variable that it will use to wait before
         //actualy spawning.
         if(!(gameObject.CompareTag(TagNames.Player))){
-            GameplayController.instance.levelController.spawnNextEnemy();
+            GameplayController.instance.SpawnNextEnemy();
         }
         else{
             GameplayController.instance.Invoke("RestartLevel",1f);
@@ -310,6 +317,21 @@ public class Unit : MonoBehaviour {
 
     }
     public void InitializeUnit(){
+        if (GameplayController.instance.entranceOn && GameplayController.instance.lightPause)
+        {
+
+            _entrance = GetComponent<Entrance>();
+            if (!_entrance)
+            {
+                Debug.LogError("You need an entrance script on this unit " + gameObject);
+            }
+            else
+            {
+                    print("we made it");
+                    currentTurnType = TurnType.Standby;
+                    _entrance.BeginEntrance();
+            }
+        }
         unitID = GameplayController.instance.GetNextUnitID();
         if (gameObject.CompareTag(TagNames.Player))
         {

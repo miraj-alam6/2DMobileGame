@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum TurnType{
-    Attack, Defense
+    Attack, Defense, Standby
 }

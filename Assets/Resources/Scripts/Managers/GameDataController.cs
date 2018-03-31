@@ -10,8 +10,10 @@ public class GameDataController : MonoBehaviour {
     public float playerRegenRate;
     public float shieldGeneralCooldownTime = 0.1f; //Cooldown time when you run out of MP or when you let go of one shield 
     public float shieldOverpoweredCooldownTime = 0.1f; //cooldown time when an offense is higher than your shield
-    public float shieldBreakCooldownTime = 1f; 
-
+    public float shieldBreakCooldownTime = 1f;
+    public float preEntranceTime;
+    public float postEntranceTime;
+    public float entranceSpeed;
 
     void Awake(){
         if (instance != null)
@@ -31,7 +33,6 @@ public class GameDataController : MonoBehaviour {
 	void Update () {
 		
 	}
-
     public void LoadDataIntoPlayer(Unit player){
         player.maxHp = playerMaxHP;
         player.maxMp = playerMaxMP;
@@ -42,4 +43,13 @@ public class GameDataController : MonoBehaviour {
         player.shieldOverpoweredCooldownTime = shieldOverpoweredCooldownTime;
         player.InitializeUnit();
     }
+
+    public void LoadDataIntoPlayer(Unit player, Entrance entrance)
+    {
+        LoadDataIntoPlayer(player);
+        entrance.preEntranceTime = preEntranceTime;
+        entrance.postEntranceTime = postEntranceTime;
+        entrance.speed = entranceSpeed;
+    }
+
 }
