@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  currentSpeed: 0
   direction: 0
   rb2D: {fileID: 0}
 --- !u!114 &114501610758355388
@@ -141,7 +142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberValue: 2
-  drainRate: 4.5
+  mpCost: 1
+  drainRate: 5
+  spriteRenderer: {fileID: 212386258964796122}
   unit: {fileID: 0}
 --- !u!212 &212386258964796122
 SpriteRenderer:

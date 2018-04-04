@@ -419,7 +419,7 @@ MonoBehaviour:
   shieldOverpoweredCooldownTime: 0.1
   shieldBreakCooldownTime: 1
   currentShield: {fileID: 0}
-  currentTurnType: 2
+  currentTurnType: 1
   _preventFireballs: 0
   currentDrainRate: 0.5
 --- !u!114 &114176056438450178
@@ -457,7 +457,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberValue: 0
+  mpCost: 0
   drainRate: 0.5
+  spriteRenderer: {fileID: 0}
   unit: {fileID: 0}
 --- !u!114 &114364311146599932
 MonoBehaviour:
@@ -471,6 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  currentSpeed: 0
   direction: 2
   rb2D: {fileID: 0}
 --- !u!114 &114769446195694952
@@ -505,10 +508,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberValue: 1
   damage: 1
+  mpCost: 0
   _unitID: 0
   movingParticleSystem: {fileID: 0}
   succcessParticleSystem: {fileID: 0}
   failParticleSystem: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  mover: {fileID: 0}
 --- !u!212 &212333749590261982
 SpriteRenderer:
   m_ObjectHideFlags: 1

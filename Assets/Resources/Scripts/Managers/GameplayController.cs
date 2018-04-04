@@ -33,8 +33,11 @@ public class GameplayController : MonoBehaviour {
     public CanvasGroup pauseMenu;
 
     public bool entranceOn = false;
+    public bool useObjectPooling = false;
 
     public int iterationDebugger;
+
+  
 
     private void Awake(){
         currentFireballs = new List<Offense>();
@@ -68,9 +71,9 @@ public class GameplayController : MonoBehaviour {
                 //defenseButtons.blocksRaycasts = false;
                 turnOffCanvasGroup(defenseButtons,Constants.InactiveButtonAlpha);
                 turnOnCanvasGroup(attackButtons);
-                attackButtons.alpha = 1;
-                attackButtons.interactable = true;
-                attackButtons.blocksRaycasts = true;
+                //attackButtons.alpha = 1;
+                //attackButtons.interactable = true;
+                //attackButtons.blocksRaycasts = true;
 
             }
             else if (player.currentTurnType == TurnType.Defense)
@@ -274,7 +277,7 @@ public class GameplayController : MonoBehaviour {
         //attackButtons.alpha = 0.5f;
         //attackButtons.interactable = false;
         //attackButtons.blocksRaycasts = false;
-        turnOffCanvasGroup(attackButtons);
+        turnOffCanvasGroup(attackButtons,Constants.InactiveButtonAlpha);
         //defenseButtons.alpha = 1;
         //defenseButtons.interactable = true;
         //defenseButtons.blocksRaycasts = true;
@@ -329,7 +332,7 @@ public class GameplayController : MonoBehaviour {
     }
     public void UnpauseGame()
     {
-        print("Unpaused the game");
+//        print("Unpaused the game");
         pauseGame = false;
         Time.timeScale = 1.0f;
         turnOffCanvasGroup(pauseMenu);

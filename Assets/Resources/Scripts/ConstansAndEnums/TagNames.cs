@@ -9,5 +9,4 @@ public class TagNames {
     public static string Shield = "Shield";
     public static string ShieldSprite = "ShieldSprite";
     public static string UnitAnimator = "UnitAnimator";
-
 }

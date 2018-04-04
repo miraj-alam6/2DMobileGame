@@ -38,7 +38,8 @@ public class AIController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 //        print("Queue size: " +commandQueue.Count + doingAction);
-        if(!doingAction){
+        if(!doingAction && unit.currentTurnType != TurnType.Standby){ //for now, ignore standby, don't think
+            //in future, standby can be a good time to think ahead if necessary.
             if(commandQueue.Count > 0){
                 if(waitTime <=0){
                     lastCommand = commandQueue.Dequeue();

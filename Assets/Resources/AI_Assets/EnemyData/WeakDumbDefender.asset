@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackThinker: {fileID: 11400000, guid: 56cbb8737c6054d119f70c652f5adc15, type: 2}
   DefenseThinker: {fileID: 11400000, guid: 72560b50b59a0438284e9b6d2574b3fb, type: 2}
-  MaxHP: 10
-  MaxMP: 15
+  MaxHP: 8
+  MaxMP: 12
   HPRegenRate: 0
-  MPRegenRate: 1.5
+  MPRegenRate: 1.3
   MaxSP: 10
   ShieldBreakCooldown: 1
   ShieldGeneralCooldown: 0.1

@@ -1113,6 +1113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberValue: 1
+  mpCost: 0
   drainRate: 4
   unit: {fileID: 0}
 --- !u!114 &114085914119762984
@@ -1141,6 +1142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberValue: 2
+  mpCost: 0
   drainRate: 6
   unit: {fileID: 0}
 --- !u!114 &114101644373799926
@@ -1155,6 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberValue: 0
+  mpCost: 0
   drainRate: 0.5
   unit: {fileID: 0}
 --- !u!114 &114135686997014836
@@ -1170,6 +1173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberValue: 1
   damage: 1
+  mpCost: 0
   _unitID: 0
   movingParticleSystem: {fileID: 0}
   succcessParticleSystem: {fileID: 0}
@@ -1203,7 +1207,7 @@ MonoBehaviour:
   _hp: 0
   _mp: 0
   hpRegenRate: 0
-  mpRegenRate: 2
+  mpRegenRate: 3
   maxSp: 10
   sp: 10
   vitalsUI: {fileID: 0}
@@ -1214,6 +1218,7 @@ MonoBehaviour:
   shieldBreakCooldownTime: 1
   currentShield: {fileID: 0}
   currentTurnType: 0
+  _preventFireballs: 0
   currentDrainRate: 0.5
 --- !u!114 &114503946443338974
 MonoBehaviour:
@@ -1242,6 +1247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberValue: 1
   damage: 1
+  mpCost: 0
   _unitID: 0
   movingParticleSystem: {fileID: 0}
   succcessParticleSystem: {fileID: 0}
@@ -1283,6 +1289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberValue: 3
+  mpCost: 0
   drainRate: 7
   unit: {fileID: 0}
 --- !u!114 &114640675137702302
@@ -1315,6 +1322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberValue: 3
   damage: 1
+  mpCost: 0
   _unitID: 0
   movingParticleSystem: {fileID: 0}
   succcessParticleSystem: {fileID: 0}
@@ -1360,6 +1368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberValue: 2
   damage: 1
+  mpCost: 0
   _unitID: 0
   movingParticleSystem: {fileID: 0}
   succcessParticleSystem: {fileID: 0}

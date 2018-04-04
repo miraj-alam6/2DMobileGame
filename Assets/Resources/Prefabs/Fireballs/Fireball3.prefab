@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  currentSpeed: 0
   direction: 3
   rb2D: {fileID: 0}
 --- !u!114 &114652039068885272
@@ -256,10 +257,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberValue: 3
   damage: 3
+  mpCost: 2.9
   _unitID: 0
   movingParticleSystem: {fileID: 198999316252977956}
   succcessParticleSystem: {fileID: 198836308710092622}
   failParticleSystem: {fileID: 198746442422996270}
+  spriteRenderer: {fileID: 212020486029618256}
+  mover: {fileID: 114113530967133826}
 --- !u!198 &198746442422996270
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -269,7 +273,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   looping: 0
   prewarm: 0
   playOnAwake: 0
@@ -320,7 +324,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1821034422
+  randomSeed: -308636133
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3630,7 +3634,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 0.5
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   looping: 0
   prewarm: 0
   playOnAwake: 0
@@ -3681,7 +3685,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2134839353
+  randomSeed: 2050833061
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6991,10 +6995,10 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -7042,7 +7046,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1186376368
+  randomSeed: -903007510
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10382,7 +10386,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 0.1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -10436,7 +10440,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 0.1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -10490,7 +10494,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 0.1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2

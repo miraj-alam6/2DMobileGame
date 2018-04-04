@@ -6,7 +6,10 @@ using UnityEngine;
 public class Defense : MonoBehaviour {
 
     public int numberValue; //1,2, or 3
+    public float mpCost;
     public float drainRate =0.5f;
+    public SpriteRenderer spriteRenderer;
+
    // private float numberTimesDrain;
     public Unit unit;
 	// Use this for initialization
@@ -19,12 +22,22 @@ public class Defense : MonoBehaviour {
     //This also calculate numberValue * drainRate and stores the value.
     public void Initialize(Unit unit){
         this.unit = unit;
+        spriteRenderer.flipX = (unit.facing == Direction.Left) ? true : false; 
+         if(unit.facing == Direction.Right){
+            
+        }
         //this.drainRate = drainRate;
         //this.numberTimesDrain = numberValue * drainRate; //no point to doing it like this. Just
         //make drainRate its own thing independent of numberValue
     }
     public void destroySelf(){
-        Destroy(this.gameObject);
+        if(GameplayController.instance.useObjectPooling){
+            this.transform.parent = null;
+            this.gameObject.SetActive(false);
+        }
+        else{
+            Destroy(this.gameObject);
+        }
     }
 
 	// Update is called once per frame
@@ -32,6 +45,10 @@ public class Defense : MonoBehaviour {
         if(unit){
 //            print("got here");
             unit.addMP(-(drainRate *Time.deltaTime));
+        }
+        else
+        {
+            destroySelf();
         }
 	}
 

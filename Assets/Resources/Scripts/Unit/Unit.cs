@@ -39,6 +39,7 @@ public class Unit : MonoBehaviour
     public float shieldOverpoweredCooldownTime = 0.1f; //cooldown time when an offense is higher than your shield
     public float shieldBreakCooldownTime = 1f; //cooldown time for when you can use shield again when shield is broken
     public Defense currentShield;
+    public Defense lastShield;
     public TurnType currentTurnType = TurnType.Attack;
 
 
@@ -99,15 +100,17 @@ public class Unit : MonoBehaviour
 	
     //This sets the direction the fireball will move as well as its ID
     public void InitFireballProperties(Offense fireball){
-        
-        fireball.GetComponent<Mover>().direction = facing;
-        fireball.GetComponent<Mover>().InitDirection();
-        fireball.unitID = unitID;
+        fireball.InitProperties(facing,unitID);
+        //fireball.GetComponent<Mover>().direction = facing;
+        //fireball.GetComponent<Mover>().InitDirection();
+        //fireball.unitID = unitID;
     }
 
     public void InitShieldProperties(Defense shield)
     {
-        shield.transform.SetParent(this.transform);
+        if(!GameplayController.instance.useObjectPooling){
+            shield.transform.SetParent(this.transform);
+        }
         shield.GetComponent<Mover>().direction = facing;
         shield.GetComponent<Mover>().InitDirection();
         shield.Initialize(this);
@@ -121,27 +124,38 @@ public class Unit : MonoBehaviour
         }
 //        print("Got here at least20");
         Offense fireball = null;
+        string poolName = null;
         switch(number){
             case 1:
+                poolName = PoolNames.pFireball1;
                 fireball = fireball1;
                 break;
             case 2:
+                poolName = PoolNames.pFireball2;
                 fireball = fireball2;
                 break;
             case 3:
+                poolName = PoolNames.pFireball3;
                 fireball = fireball3;
                 break;
             default:
                 Debug.LogError("Invalid number for fireball. Must be an integer between 1 and 3.");
                 break;
         }
-        if(fireball!=null && fireball.numberValue <= mp){
+        if(fireball!=null && fireball.mpCost <= mp){
             animator.SetTrigger(ParameterNames.Fire);
-            GameObject obj = (GameObject)Instantiate(fireball.gameObject,fireballLocation.position,fireballLocation.rotation);
+            GameObject obj = null;
+            if(GameplayController.instance.useObjectPooling){
+                
+                obj = ObjectPooler.instance.SpawnFromPool(poolName, fireballLocation.position, fireballLocation.rotation);
+            }
+            else{
+                obj = (GameObject)Instantiate(fireball.gameObject, fireballLocation.position, fireballLocation.rotation);
+            }
+
             //obj.GetComponent<Offense>().unitID = unitID;
             InitFireballProperties(obj.GetComponent<Offense>());
-
-            addMP(-fireball.numberValue);
+            addMP(-fireball.mpCost);
         }
     }
 
@@ -186,15 +200,19 @@ public class Unit : MonoBehaviour
                 stopShield();
             }
             Defense shield = null;
+            string poolName = null;//used for object pooling
             switch (number)
             {
                 case 1:
+                    poolName = PoolNames.pShield1;
                     shield = shield1;
                     break;
                 case 2:
+                    poolName = PoolNames.pShield2;
                     shield = shield2;
                     break;
                 case 3:
+                    poolName = PoolNames.pShield3;
                     shield = shield3;
                     break;
                 default:
@@ -203,13 +221,18 @@ public class Unit : MonoBehaviour
             }
 
 
-            if (shield != null && shield.numberValue <= _mp)
+            if (shield != null && shield.mpCost <= _mp)
             {
                 usingShield = true;
                 animator.SetBool(ParameterNames.Defend, true);
-                currentShield = (Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
+                if(GameplayController.instance.useObjectPooling){
+                    lastShield = currentShield = (ObjectPooler.instance.SpawnFromPool(poolName, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
+                }
+                else{
+                    lastShield = currentShield = (Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
+                }
                 InitShieldProperties(currentShield);
-                addMP(-shield.numberValue);
+                addMP(-shield.mpCost);
                 // Substracting MP here isn't enough. After creating the shield object,
                 //it  will deal with constantly draining your MP. The shield will also call stopShield
                 //once you run out MP
@@ -222,7 +245,13 @@ public class Unit : MonoBehaviour
         animator.SetBool(ParameterNames.Defend, false);
         usingShield = false;
         if(currentShield){
-            currentShield.destroySelf();
+            if(GameplayController.instance.useObjectPooling){
+                currentShield.destroySelf();
+            }
+            else{
+                currentShield.destroySelf();
+            }
+
         }
         currentShield = null;
     }
@@ -262,6 +291,9 @@ public class Unit : MonoBehaviour
         removeShield();
         //TODO probably isn't good hard code constants.
         float waitTime = 0.2f;
+        if(lastShield){
+            lastShield.destroySelf();
+        }
         Destroy(this.gameObject, waitTime);
         //Even though the above happens .2 seconds later. spawnNextEnemy won't happen instantly either
         //because levelController itself has a wait time variable that it will use to wait before
