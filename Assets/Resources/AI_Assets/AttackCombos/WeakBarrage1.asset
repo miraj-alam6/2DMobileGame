@@ -9,17 +9,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdc9ab074a9354372a6e74deec70bac5, type: 3}
-  m_Name: WeakBarrage
+  m_Name: WeakBarrage1
   m_EditorClassIdentifier: 
   commands:
   - action: {fileID: 11400000, guid: 9b31f93613f5343e1afba0e77ab10f2d, type: 2}
     waitTime: 0.1
   - action: {fileID: 11400000, guid: 9b31f93613f5343e1afba0e77ab10f2d, type: 2}
-    waitTime: 0.1
+    waitTime: 0.15
   - action: {fileID: 11400000, guid: 9b31f93613f5343e1afba0e77ab10f2d, type: 2}
-    waitTime: 0.1
+    waitTime: 0.15
   - action: {fileID: 11400000, guid: 9b31f93613f5343e1afba0e77ab10f2d, type: 2}
-    waitTime: 0.1
+    waitTime: 0.15
   - action: {fileID: 11400000, guid: 9b31f93613f5343e1afba0e77ab10f2d, type: 2}
-    waitTime: 0.1
+    waitTime: 0.15
   mpHeuristic: 5

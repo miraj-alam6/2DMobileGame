@@ -539,7 +539,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662537024894380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.75, y: -0.15, z: 0}
+  m_LocalPosition: {x: -3.75, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4005102679762024}
@@ -1115,6 +1115,7 @@ MonoBehaviour:
   numberValue: 1
   mpCost: 0
   drainRate: 4
+  spriteRenderer: {fileID: 0}
   unit: {fileID: 0}
 --- !u!114 &114085914119762984
 MonoBehaviour:
@@ -1128,6 +1129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  currentSpeed: 0
   direction: 3
   rb2D: {fileID: 0}
 --- !u!114 &114098232157061492
@@ -1144,6 +1146,7 @@ MonoBehaviour:
   numberValue: 2
   mpCost: 0
   drainRate: 6
+  spriteRenderer: {fileID: 0}
   unit: {fileID: 0}
 --- !u!114 &114101644373799926
 MonoBehaviour:
@@ -1159,6 +1162,7 @@ MonoBehaviour:
   numberValue: 0
   mpCost: 0
   drainRate: 0.5
+  spriteRenderer: {fileID: 0}
   unit: {fileID: 0}
 --- !u!114 &114135686997014836
 MonoBehaviour:
@@ -1178,6 +1182,8 @@ MonoBehaviour:
   movingParticleSystem: {fileID: 0}
   succcessParticleSystem: {fileID: 0}
   failParticleSystem: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  mover: {fileID: 0}
 --- !u!114 &114211433341442782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1215,8 +1221,9 @@ MonoBehaviour:
   canUseShield: 1
   shieldGeneralCooldownTime: 0.1
   shieldOverpoweredCooldownTime: 0.1
-  shieldBreakCooldownTime: 1
+  shieldBreakCooldownTime: 0.1
   currentShield: {fileID: 0}
+  lastShield: {fileID: 0}
   currentTurnType: 0
   _preventFireballs: 0
   currentDrainRate: 0.5
@@ -1232,6 +1239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  currentSpeed: 0
   direction: 0
   rb2D: {fileID: 0}
 --- !u!114 &114509283333168120
@@ -1252,6 +1260,8 @@ MonoBehaviour:
   movingParticleSystem: {fileID: 0}
   succcessParticleSystem: {fileID: 0}
   failParticleSystem: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  mover: {fileID: 0}
 --- !u!114 &114570849546645898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1275,6 +1285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  currentSpeed: 0
   direction: 3
   rb2D: {fileID: 0}
 --- !u!114 &114635483591061618
@@ -1291,6 +1302,7 @@ MonoBehaviour:
   numberValue: 3
   mpCost: 0
   drainRate: 7
+  spriteRenderer: {fileID: 0}
   unit: {fileID: 0}
 --- !u!114 &114640675137702302
 MonoBehaviour:
@@ -1327,6 +1339,8 @@ MonoBehaviour:
   movingParticleSystem: {fileID: 0}
   succcessParticleSystem: {fileID: 0}
   failParticleSystem: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  mover: {fileID: 0}
 --- !u!114 &114744029681684772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1339,6 +1353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  currentSpeed: 0
   direction: 3
   rb2D: {fileID: 0}
 --- !u!114 &114830093988934724
@@ -1353,6 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  currentSpeed: 0
   direction: 3
   rb2D: {fileID: 0}
 --- !u!114 &114902085149982294
@@ -1373,6 +1389,8 @@ MonoBehaviour:
   movingParticleSystem: {fileID: 0}
   succcessParticleSystem: {fileID: 0}
   failParticleSystem: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  mover: {fileID: 0}
 --- !u!114 &114921779239387836
 MonoBehaviour:
   m_ObjectHideFlags: 1

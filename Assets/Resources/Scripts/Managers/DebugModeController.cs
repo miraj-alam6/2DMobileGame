@@ -17,7 +17,9 @@ public class DebugModeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetKeyDown(KeyCode.M)){
+            killCurrentEnemy();
+        }
 	}
 
     public void increaseDataHP(){
@@ -72,5 +74,8 @@ public class DebugModeController : MonoBehaviour {
 
     public void reinitializePlayer(){
         GameDataController.instance.LoadDataIntoPlayer(GameplayController.instance.player);
+    }
+    public void killCurrentEnemy(){
+        GameplayController.instance.currentEnemy.addHP(-9000);
     }
 }

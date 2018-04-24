@@ -446,6 +446,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   enemyData: {fileID: 0}
+  rayCastOffset: {x: -1.6, y: 0, z: 0}
 --- !u!114 &114287953508289484
 MonoBehaviour:
   m_ObjectHideFlags: 1

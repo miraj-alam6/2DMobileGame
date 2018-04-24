@@ -37,7 +37,7 @@ public class Unit : MonoBehaviour
     public bool canUseShield = true;
     public float shieldGeneralCooldownTime = 0.1f; //Cooldown time when you run out of MP or when you let go of one shield 
     public float shieldOverpoweredCooldownTime = 0.1f; //cooldown time when an offense is higher than your shield
-    public float shieldBreakCooldownTime = 1f; //cooldown time for when you can use shield again when shield is broken
+    public float shieldBreakCooldownTime = 0.2f; //cooldown time for when you can use shield again when shield is broken
     public Defense currentShield;
     public Defense lastShield;
     public TurnType currentTurnType = TurnType.Attack;
@@ -62,6 +62,17 @@ public class Unit : MonoBehaviour
         get
         {
             return _mp;
+        }
+        //set{
+        //    _spawning = value; 
+        //}
+
+    }
+    public float hp
+    {
+        get
+        {
+            return _hp;
         }
         //set{
         //    _spawning = value; 
@@ -194,55 +205,65 @@ public class Unit : MonoBehaviour
 
     //This is called once button is pressed
     public void startShield(int number){
-        if(currentTurnType == TurnType.Defense){ //Just as a precaution. This check is not required to have
-            //If a shield already exists, destroy that one, and then create a new one
-            if(usingShield){
-                stopShield();
-            }
-            Defense shield = null;
-            string poolName = null;//used for object pooling
-            switch (number)
-            {
-                case 1:
-                    poolName = PoolNames.pShield1;
-                    shield = shield1;
-                    break;
-                case 2:
-                    poolName = PoolNames.pShield2;
-                    shield = shield2;
-                    break;
-                case 3:
-                    poolName = PoolNames.pShield3;
-                    shield = shield3;
-                    break;
-                default:
-                    Debug.LogError("Invalid number for shield. Must be an integer between 1 and 3.");
-                    break;
-            }
+        print("shielding"+canUseShield);
+        if(canUseShield){
+            if(currentTurnType == TurnType.Defense){ //Just as a precaution. This check is not required to have
+                //If a shield already exists, destroy that one, and then create a new one
+                if(usingShield){
+                    if(currentShield.numberValue == number){
+                        return;
+                    }
+                    else{
+                        stopShield();
+                    }
+                }
+                Defense shield = null;
+                string poolName = null;//used for object pooling
+                switch (number)
+                {
+                    case 1:
+                        poolName = PoolNames.pShield1;
+                        shield = shield1;
+                        break;
+                    case 2:
+                        poolName = PoolNames.pShield2;
+                        shield = shield2;
+                        break;
+                    case 3:
+                        poolName = PoolNames.pShield3;
+                        shield = shield3;
+                        break;
+                    default:
+                        Debug.LogError("Invalid number for shield. Must be an integer between 1 and 3.");
+                        break;
+                }
 
 
-            if (shield != null && shield.mpCost <= _mp)
-            {
-                usingShield = true;
-                animator.SetBool(ParameterNames.Defend, true);
-                if(GameplayController.instance.useObjectPooling){
-                    lastShield = currentShield = (ObjectPooler.instance.SpawnFromPool(poolName, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
+                if (shield != null && shield.mpCost <= _mp)
+                {
+                    usingShield = true;
+                    animator.SetBool(ParameterNames.Defend, true);
+                    if(GameplayController.instance.useObjectPooling){
+                        lastShield = currentShield = (ObjectPooler.instance.SpawnFromPool(poolName, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
+                    }
+                    else{
+                        lastShield = currentShield = (Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
+                    }
+                    InitShieldProperties(currentShield);
+                    addMP(-shield.mpCost);
+                    // Substracting MP here isn't enough. After creating the shield object,
+                    //it  will deal with constantly draining your MP. The shield will also call stopShield
+                    //once you run out MP
                 }
-                else{
-                    lastShield = currentShield = (Instantiate(shield.gameObject, shieldLocation.position, shieldLocation.rotation)).GetComponent<Defense>();
-                }
-                InitShieldProperties(currentShield);
-                addMP(-shield.mpCost);
-                // Substracting MP here isn't enough. After creating the shield object,
-                //it  will deal with constantly draining your MP. The shield will also call stopShield
-                //once you run out MP
             }
         }
     }
     //General code used in all methods that destroy shield
     public void removeShield()
     {
-        animator.SetBool(ParameterNames.Defend, false);
+        if(animator){
+            animator.SetBool(ParameterNames.Defend, false);
+        }
         usingShield = false;
         if(currentShield){
             if(GameplayController.instance.useObjectPooling){
@@ -259,19 +280,23 @@ public class Unit : MonoBehaviour
     //the player may theoretically still be holding the button down even after turn ends.
     public void stopShield()
     {
+        //canUseShield = false; //can't do this here, because this would mess up the flow of switching shields
+        print("stopped shield "+canUseShield);
         removeShield();
         //Shield fading animation or something.
-        Invoke("makeShieldUsable", shieldGeneralCooldownTime);
+//        Invoke("makeShieldUsable", shieldGeneralCooldownTime);
     }
 
     public void shieldOverpowered()
     {
+        canUseShield = false;
         removeShield();
         //Instantiate shield overpowered particle effect.
         Invoke("makeShieldUsable",shieldOverpoweredCooldownTime);
     }
     public void shieldBroken()
     {
+        canUseShield = false;
         removeShield();
         //Instantiate shield break particle effect which should be more dramatic than overpowered.
         Invoke("makeShieldUsable", shieldBreakCooldownTime);
@@ -359,7 +384,6 @@ public class Unit : MonoBehaviour
             }
             else
             {
-                    print("we made it");
                     currentTurnType = TurnType.Standby;
                     _entrance.BeginEntrance();
             }

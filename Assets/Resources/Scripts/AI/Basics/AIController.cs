@@ -22,6 +22,7 @@ public class AIController : MonoBehaviour {
     public LayerMask fireballLayerMask;
     public EnemyData enemyData;
 
+    public Vector3 rayCastOffset;
 
 	// Use this for initialization
 	void Start () {
@@ -44,7 +45,9 @@ public class AIController : MonoBehaviour {
                 if(waitTime <=0){
                     lastCommand = commandQueue.Dequeue();
                     waitTime = lastCommand.waitTime;
-                    lastCommand.action.Act(this);
+                    if(lastCommand != null){
+                        lastCommand.action.Act(this);
+                    }
                 }
                 else{
                     waitTime -= Time.deltaTime;
@@ -132,8 +135,8 @@ public class AIController : MonoBehaviour {
     public RaycastHit2D CheckRayCast(float rayDistance)
     {
         if(this){
-            Debug.DrawRay(transform.position, (transform.right * -1).normalized * rayDistance, Color.red);
-            return Physics2D.Raycast(transform.position, transform.right * -1, rayDistance, fireballLayerMask);
+            Debug.DrawRay(transform.position+ rayCastOffset, (transform.right * -1).normalized * rayDistance, Color.red);
+            return Physics2D.Raycast(transform.position + rayCastOffset, transform.right * -1, rayDistance, fireballLayerMask);
         }
         return new RaycastHit2D(); //Need to return this if this is null. That's possible only when the 
         //object is being destroyed

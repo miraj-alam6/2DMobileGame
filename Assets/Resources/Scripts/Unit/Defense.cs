@@ -63,7 +63,7 @@ public class Defense : MonoBehaviour {
             else{
                 //Have specific action for by how much the number the shield was trumped
                 //for how much shield gauge is broken. For now simply stop the shield.
-                unit.stopShield();
+                unit.shieldOverpowered();
             }
         }
     }

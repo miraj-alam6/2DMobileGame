@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53f4c6554a8c644b48c9705883748a29, type: 3}
-  m_Name: WeakDumbDefender
+  m_Name: BasicOffenseHard
   m_EditorClassIdentifier: 
   AttackThinker: {fileID: 11400000, guid: 56cbb8737c6054d119f70c652f5adc15, type: 2}
-  DefenseThinker: {fileID: 11400000, guid: 72560b50b59a0438284e9b6d2574b3fb, type: 2}
+  DefenseThinker: {fileID: 0}
   MaxHP: 10
-  MaxMP: 12
+  MaxMP: 10
   HPRegenRate: 0
   MPRegenRate: 1.5
   MaxSP: 10
@@ -23,4 +23,4 @@ MonoBehaviour:
   ShieldOverpoweredCooldown: 0.5
   animatorController: {fileID: 22100000, guid: 8d0134aca740f4158b12866df736f53e, type: 2}
   sprite: {fileID: 21300000, guid: caedb7151e3c4407faef254a9b352ecf, type: 3}
-  color: {r: 0.45764294, g: 0.64705884, b: 0.30449826, a: 1}
+  color: {r: 0.77254903, g: 0.5647059, b: 0.023529412, a: 1}

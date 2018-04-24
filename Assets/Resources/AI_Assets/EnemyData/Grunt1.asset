@@ -9,18 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53f4c6554a8c644b48c9705883748a29, type: 3}
-  m_Name: BasicOffense
+  m_Name: Grunt1
   m_EditorClassIdentifier: 
-  AttackThinker: {fileID: 11400000, guid: 56cbb8737c6054d119f70c652f5adc15, type: 2}
-  DefenseThinker: {fileID: 0}
+  AttackThinker: {fileID: 11400000, guid: a6768d010843a41f38b1b63b5159d4c8, type: 2}
+  DefenseThinker: {fileID: 11400000, guid: 368703500e8374ead895c0674d4f6fe9, type: 2}
   MaxHP: 10
   MaxMP: 10
   HPRegenRate: 0
   MPRegenRate: 1.5
   MaxSP: 10
   ShieldBreakCooldown: 1
-  ShieldGeneralCooldown: 0.1
-  ShieldOverpoweredCooldown: 0.1
+  ShieldGeneralCooldown: 1
+  ShieldOverpoweredCooldown: 0.5
   animatorController: {fileID: 22100000, guid: 8d0134aca740f4158b12866df736f53e, type: 2}
   sprite: {fileID: 21300000, guid: caedb7151e3c4407faef254a9b352ecf, type: 3}
-  color: {r: 0.9632353, g: 0.8212638, b: 0.44620463, a: 1}
+  color: {r: 0.9647059, g: 0.81960785, b: 0.44705883, a: 1}

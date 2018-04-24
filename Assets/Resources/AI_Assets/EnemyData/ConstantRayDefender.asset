@@ -19,8 +19,8 @@ MonoBehaviour:
   MPRegenRate: 2
   MaxSP: 10
   ShieldBreakCooldown: 1
-  ShieldGeneralCooldown: 0.1
-  ShieldOverpoweredCooldown: 0.1
-  animatorController: {fileID: 9100000, guid: c7a0f1aad25db4ce58ca9c83ed22dbc5, type: 2}
+  ShieldGeneralCooldown: 1
+  ShieldOverpoweredCooldown: 0.5
+  animatorController: {fileID: 22100000, guid: 8d0134aca740f4158b12866df736f53e, type: 2}
   sprite: {fileID: 21300000, guid: e3d0ca39fd3a2470f8a51076504aa4fb, type: 3}
   color: {r: 1, g: 0.26896554, b: 0, a: 1}
