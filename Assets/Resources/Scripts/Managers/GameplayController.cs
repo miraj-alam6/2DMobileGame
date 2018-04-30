@@ -361,6 +361,7 @@ public class GameplayController : MonoBehaviour {
         if(lightPause){
             //If player spawns (which is in the beginning), then spawn the first enemy next.
             if(tagName.Equals(TagNames.Player)){
+                player.showVitals();
                 levelController.nextEnemySpawn();         
             }
             else{
@@ -372,8 +373,8 @@ public class GameplayController : MonoBehaviour {
         if (player && currentEnemy && player.entrance.entranceDone
             && currentEnemy.entrance.entranceDone)
         {
-            player.showVitals();
             currentEnemy.showVitals();
+
             lightPause = false;
             //first turn of the game
             if(player.currentTurnType == TurnType.Standby && currentEnemy.currentTurnType 

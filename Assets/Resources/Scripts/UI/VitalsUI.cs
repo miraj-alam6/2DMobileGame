@@ -104,6 +104,9 @@ public class VitalsUI : MonoBehaviour {
     public void show(){
         canvasGroup.alpha = 1f;
     }
+    public void delayedHide(float time){
+        Invoke("hide",time);
+    }
 	// Update is called once per frame
 	void Update () {
 		

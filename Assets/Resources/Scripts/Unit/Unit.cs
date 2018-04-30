@@ -319,7 +319,13 @@ public class Unit : MonoBehaviour
         if(lastShield){
             lastShield.destroySelf();
         }
-        this.vitalsUI.hide();
+        if (GameplayController.instance.entranceOn)
+        {
+            this.vitalsUI.delayedHide(0.5f);
+        }
+        else{
+            this.vitalsUI.delayedHide(0.1f);
+        }
         Destroy(this.gameObject, waitTime);
 
         //Even though the above happens .2 seconds later. spawnNextEnemy won't happen instantly either
@@ -392,7 +398,7 @@ public class Unit : MonoBehaviour
             }
         }
         else{
-            if (GameplayController.instance.player.currentTurnType == TurnType.Attack)
+            if (GameplayController.instance.entranceOn && GameplayController.instance.player.currentTurnType == TurnType.Attack)
             {
                 GameplayController.instance.player.preventFireballs = true;
             }
