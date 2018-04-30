@@ -17,13 +17,13 @@ MonoBehaviour:
     action: {fileID: 11400000, guid: e785d21d71a5a4b6e9aa95ff16abfa45, type: 2}
     waitTime: 0
   stopShield:
-    action: {fileID: 0}
-    waitTime: 0
+    action: {fileID: 11400000, guid: a7ba1707812fb4e249d9b2fbbef158de, type: 2}
+    waitTime: 0.1
   idle:
-    action: {fileID: 0}
-    waitTime: 0
+    action: {fileID: 11400000, guid: 93721df0fb0a24552a4b85191051f99b, type: 2}
+    waitTime: 0.1
   smartShield: 1
-  waitInterval: 0.1
+  waitInterval: 0.01
   commandArr:
   - action: {fileID: 11400000, guid: 93721df0fb0a24552a4b85191051f99b, type: 2}
     waitTime: 0.1

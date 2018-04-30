@@ -15,7 +15,12 @@ public class GameDataController : MonoBehaviour {
     public float postEntranceTime;
     public float entranceSpeed;
 
+
+    public bool customEntrance = false;
+    public float customEntranceSpeed;
+
     void Awake(){
+        customEntranceSpeed = 2;
         if (instance != null)
             Destroy(gameObject);
         else

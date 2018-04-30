@@ -8,6 +8,7 @@ public class DebugModeController : MonoBehaviour {
     public Text currentPlayerHPDataText;
     public Text currentPlayerMPDataText;
     public Text currentPlayerRegenDataText;
+    public Text currenCustomEntranceSpeed;
 
 
 	// Use this for initialization
@@ -77,5 +78,14 @@ public class DebugModeController : MonoBehaviour {
     }
     public void killCurrentEnemy(){
         GameplayController.instance.currentEnemy.addHP(-9000);
+    }
+
+    public void useCustomEntrance(){
+        GameDataController.instance.customEntrance = true;
+    }
+    public void increaseCustomEntranceSpeed(float value)
+    {
+        GameDataController.instance.customEntranceSpeed += value;
+        currenCustomEntranceSpeed.text = ""+GameDataController.instance.customEntranceSpeed;
     }
 }

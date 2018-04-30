@@ -21,6 +21,9 @@ public class Entrance : MonoBehaviour {
     }
     public void BeginEntrance(){
        
+        if(GameDataController.instance.customEntrance){
+            speed = GameDataController.instance.customEntranceSpeed;
+        }
         StartCoroutine("EnterArena");
 
     }
