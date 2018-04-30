@@ -324,6 +324,7 @@ public class Unit : MonoBehaviour
         //because levelController itself has a wait time variable that it will use to wait before
         //actualy spawning.
         if(!(gameObject.CompareTag(TagNames.Player))){
+            GameplayController.instance.player.preventFireballs = true;
             GameplayController.instance.SpawnNextEnemy();
         }
         else{
@@ -386,6 +387,12 @@ public class Unit : MonoBehaviour
             {
                     currentTurnType = TurnType.Standby;
                     _entrance.BeginEntrance();
+            }
+        }
+        else{
+            if (GameplayController.instance.player.currentTurnType == TurnType.Attack)
+            {
+                GameplayController.instance.player.preventFireballs = true;
             }
         }
         unitID = GameplayController.instance.GetNextUnitID();

@@ -352,6 +352,11 @@ public class GameplayController : MonoBehaviour {
     }
 
     public void FinishSpawning(string tagName){
+        if (player && player.currentTurnType == TurnType.Attack)
+        {
+            player.preventFireballs = true;
+        }
+
         if(lightPause){
             //If player spawns (which is in the beginning), then spawn the first enemy next.
             if(tagName.Equals(TagNames.Player)){
