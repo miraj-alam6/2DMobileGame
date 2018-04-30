@@ -25,19 +25,27 @@ public class VitalsUI : MonoBehaviour {
     public RectTransform MPBarTransform;
     public RectTransform SPBarTransform;
     public RectTransform SPBackgroundBarTransform;
-   
+    public CanvasGroup canvasGroup;
+
     public int scale = 20; //This is for MP and HP, because each point has a width equivalent
                       // Use this for initialization
     public int outlineOffset = 20;//This is for MP and HP, because each point has a width equivalent
                                   // Use this for initialization
     //public Vector2 SPBarDimensions = new Vector2(45, 85);
 
+    void Awake(){
+        canvasGroup = GetComponent<CanvasGroup>();
+        hide();
+    }
     void Start () {
-		
+        
 	}
 
     public void InitializeVitals(float maxHP, float maxMP){
         //HPOuterBarTransform.rect.Set();
+        if(!GameplayController.instance.entranceOn){
+            show();
+        }
         HPOuterBarTransform.sizeDelta = new Vector2(maxHP * scale+outlineOffset, HPOuterBarTransform.sizeDelta.y);
         HPBackgroundBarTransform.sizeDelta = new Vector2(maxHP * scale, HPBackgroundBarTransform.sizeDelta.y);
         HPBarTransform.sizeDelta = new Vector2(maxHP * scale, HPBarTransform.sizeDelta.y);
@@ -90,7 +98,12 @@ public class VitalsUI : MonoBehaviour {
         rT.sizeDelta = new Vector2( rT.sizeDelta.x, ((float)current / max) * backgroundRT.sizeDelta.y);
     }
                                   
-
+    public void hide(){
+        canvasGroup.alpha = 0;
+    }
+    public void show(){
+        canvasGroup.alpha = 1f;
+    }
 	// Update is called once per frame
 	void Update () {
 		

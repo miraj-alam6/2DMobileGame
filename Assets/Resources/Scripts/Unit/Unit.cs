@@ -319,7 +319,9 @@ public class Unit : MonoBehaviour
         if(lastShield){
             lastShield.destroySelf();
         }
+        this.vitalsUI.hide();
         Destroy(this.gameObject, waitTime);
+
         //Even though the above happens .2 seconds later. spawnNextEnemy won't happen instantly either
         //because levelController itself has a wait time variable that it will use to wait before
         //actualy spawning.
@@ -413,5 +415,8 @@ public class Unit : MonoBehaviour
         _hp = maxHp;
         _mp = maxMp;
         vitalsUI.InitializeVitals(maxHp, maxMp);
+    }
+    public void showVitals(){
+        vitalsUI.show();
     }
 }

@@ -352,6 +352,7 @@ public class GameplayController : MonoBehaviour {
     }
 
     public void FinishSpawning(string tagName){
+        
         if (player && player.currentTurnType == TurnType.Attack)
         {
             player.preventFireballs = true;
@@ -371,6 +372,8 @@ public class GameplayController : MonoBehaviour {
         if (player && currentEnemy && player.entrance.entranceDone
             && currentEnemy.entrance.entranceDone)
         {
+            player.showVitals();
+            currentEnemy.showVitals();
             lightPause = false;
             //first turn of the game
             if(player.currentTurnType == TurnType.Standby && currentEnemy.currentTurnType 
