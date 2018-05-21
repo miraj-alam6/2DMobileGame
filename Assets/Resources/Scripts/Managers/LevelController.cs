@@ -12,10 +12,13 @@ public class LevelController: MonoBehaviour {
     public float spawnWaitTime =1f; //how long we wait to spawn next enemy once current enemy dies
     private bool isSpawning;
     private int currentEnemyIndex =0;
+    public int[] checkPoints;
 	// Use this for initialization
 	void Start () {
         isSpawning = false;
         GameplayController.instance.levelController = this;
+        checkCheckPoints();
+
         //spawnNextEnemy();
         if(!isPracticeLevel){
             if(GameplayController.instance.entranceOn){
@@ -30,7 +33,16 @@ public class LevelController: MonoBehaviour {
 	
 
 
+    public void checkCheckPoints(){
+        int highestReached = 0;
 
+        foreach(int c in checkPoints){
+            if(GameDataController.instance.highestEnemyIndexReached >= c){
+                highestReached = c;
+            }
+        }
+        currentEnemyIndex = highestReached;
+    }
 
     public void spawnNextEnemy()
     {
@@ -65,10 +77,16 @@ public class LevelController: MonoBehaviour {
     public void nextEnemySpawn()
     {
         if(currentEnemyIndex < enemiesList.Length){
+            GameDataController.instance.highestEnemyIndexReached = currentEnemyIndex;
             Unit unit = (Instantiate(baseEnemy, enemyTempSpawnPoint.position, enemyTempSpawnPoint.rotation));
             unit.GetComponent<AIController>().enemyData = enemiesList[currentEnemyIndex]; // TODO: Messy broken window solution, need to rethink this with object pooling
             isSpawning = false;
             currentEnemyIndex++;
+        }
+        else{
+            //TODO: Level is done, so we have to clear highestIndex reached and load next level.
+            GameDataController.instance.highestEnemyIndexReached = 0;
+
         }
     }
 

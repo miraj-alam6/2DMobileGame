@@ -654,6 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224522790292468554}
   - component: {fileID: 114658476006864540}
+  - component: {fileID: 225009037800875842}
   m_Layer: 5
   m_Name: PlayerVitals
   m_TagString: Untagged
@@ -1114,6 +1115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224405565721268968}
   - component: {fileID: 114421896520567992}
+  - component: {fileID: 225787489668385046}
   m_Layer: 5
   m_Name: EnemyVitals
   m_TagString: Untagged
@@ -3938,6 +3940,7 @@ MonoBehaviour:
   MPBarTransform: {fileID: 224090946758952014}
   SPBarTransform: {fileID: 224245558269386112}
   SPBackgroundBarTransform: {fileID: 224458600810819022}
+  canvasGroup: {fileID: 0}
   scale: 10
   outlineOffset: 20
 --- !u!114 &114427712881007184
@@ -4998,6 +5001,7 @@ MonoBehaviour:
   MPBarTransform: {fileID: 224416095754018114}
   SPBarTransform: {fileID: 224543899260816672}
   SPBackgroundBarTransform: {fileID: 224665788138796430}
+  canvasGroup: {fileID: 0}
   scale: 10
   outlineOffset: 20
 --- !u!114 &114660754910599294
@@ -7456,7 +7460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 81.8, y: -43.8}
+  m_AnchoredPosition: {x: 81.80005, y: -43.80005}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224357486894337208
@@ -8422,7 +8426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 57.909973, y: -41.67993}
+  m_AnchoredPosition: {x: 57.909912, y: -41.67993}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224722035104523244
@@ -9103,6 +9107,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225009037800875842
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494918776362812}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!225 &225060741337221372
 CanvasGroup:
   m_ObjectHideFlags: 1
@@ -9131,6 +9146,17 @@ CanvasGroup:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482208961609918}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225787489668385046
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1664553962036464}
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1

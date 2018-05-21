@@ -351,6 +351,18 @@ public class GameplayController : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    //resets checkpoint
+    public void RestartFullLevel()
+    {
+        GameDataController.instance.highestEnemyIndexReached = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GameOver()
+    {
+        RestartLevel();
+    }
+
     public void FinishSpawning(string tagName){
         
         if (player && player.currentTurnType == TurnType.Attack)
@@ -374,7 +386,6 @@ public class GameplayController : MonoBehaviour {
             && currentEnemy.entrance.entranceDone)
         {
             currentEnemy.showVitals();
-
             lightPause = false;
             //first turn of the game
             if(player.currentTurnType == TurnType.Standby && currentEnemy.currentTurnType 

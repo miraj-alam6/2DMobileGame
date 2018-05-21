@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -378,6 +378,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -451,6 +452,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -537,6 +539,7 @@ MonoBehaviour:
   preEntranceTime: 0
   postEntranceTime: 0
   entranceSpeed: 0
+  highestEnemyIndexReached: 0
   customEntrance: 0
   customEntranceSpeed: 2
 --- !u!4 &253575616 stripped
@@ -622,6 +625,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -695,6 +699,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -993,6 +998,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -1267,22 +1273,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4853090850313044, guid: 893130ccc9aa94c1db2a6437f8db881b,
     type: 2}
   m_PrefabInternal: {fileID: 734011964}
---- !u!1 &755678929 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1664553962036464, guid: 2b245893af3ac4f1f8e7406b87617733,
-    type: 2}
-  m_PrefabInternal: {fileID: 1712694052}
---- !u!225 &755678930
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 755678929}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &776725405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1315,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -1398,6 +1389,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -1974,6 +1966,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2161,6 +2154,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2240,6 +2234,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2349,22 +2344,6 @@ CanvasGroup:
   m_PrefabParentObject: {fileID: 225203862151161450, guid: 2b245893af3ac4f1f8e7406b87617733,
     type: 2}
   m_PrefabInternal: {fileID: 1712694052}
---- !u!1 &1549865604 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1494918776362812, guid: 2b245893af3ac4f1f8e7406b87617733,
-    type: 2}
-  m_PrefabInternal: {fileID: 1712694052}
---- !u!225 &1549865605
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1549865604}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &1552590563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,6 +2386,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2539,6 +2519,7 @@ MonoBehaviour:
     type: 2}
   isPracticeLevel: 0
   spawnWaitTime: 1
+  checkPoints: 0000000009000000
 --- !u!4 &1563426053
 Transform:
   m_ObjectHideFlags: 0
@@ -2594,6 +2575,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2672,6 +2654,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2795,6 +2778,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2930,6 +2914,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -3100,112 +3085,27 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114454073968775366, guid: 2b245893af3ac4f1f8e7406b87617733,
+    - target: {fileID: 114369235803643934, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1693426360}
-    - target: {fileID: 114397698437379242, guid: 2b245893af3ac4f1f8e7406b87617733,
+      objectReference: {fileID: 1758822038}
+    - target: {fileID: 114184884914900594, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 405827460}
-    - target: {fileID: 114973112975695472, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1693426360}
-    - target: {fileID: 114769853351188906, guid: 2b245893af3ac4f1f8e7406b87617733,
+    - target: {fileID: 114624982952212424, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1758822038}
-    - target: {fileID: 114458137084373718, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1758822038}
-    - target: {fileID: 114547640035785220, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 405827460}
-    - target: {fileID: 114547640035785220, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 405827460}
-    - target: {fileID: 114774341206010768, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1758822038}
-    - target: {fileID: 114441701439394430, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 405827460}
-    - target: {fileID: 114845800884663932, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1693426360}
-    - target: {fileID: 114147870252363964, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1758822038}
-    - target: {fileID: 114077529340857612, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 405827460}
-    - target: {fileID: 114077529340857612, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 405827460}
-    - target: {fileID: 114295607034705970, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1758822038}
-    - target: {fileID: 114396449369774266, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1758822038}
-    - target: {fileID: 114895597117745322, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1758822038}
-    - target: {fileID: 114895597117745322, guid: 2b245893af3ac4f1f8e7406b87617733,
+    - target: {fileID: 114624982952212424, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1758822038}
-    - target: {fileID: 114118170896872164, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1693426360}
-    - target: {fileID: 114751620758346374, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 405827460}
-    - target: {fileID: 114751620758346374, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 405827460}
-    - target: {fileID: 114283852289529298, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1758822038}
-    - target: {fileID: 114187141929699048, guid: 2b245893af3ac4f1f8e7406b87617733,
+    - target: {fileID: 114806616695251210, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3215,54 +3115,120 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1693426360}
-    - target: {fileID: 114806616695251210, guid: 2b245893af3ac4f1f8e7406b87617733,
+    - target: {fileID: 114187141929699048, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1693426360}
-    - target: {fileID: 114624982952212424, guid: 2b245893af3ac4f1f8e7406b87617733,
+    - target: {fileID: 114283852289529298, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1758822038}
-    - target: {fileID: 114624982952212424, guid: 2b245893af3ac4f1f8e7406b87617733,
+    - target: {fileID: 114751620758346374, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 405827460}
+    - target: {fileID: 114751620758346374, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 405827460}
+    - target: {fileID: 114118170896872164, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693426360}
+    - target: {fileID: 114895597117745322, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1758822038}
+    - target: {fileID: 114895597117745322, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1758822038}
-    - target: {fileID: 114184884914900594, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 405827460}
-    - target: {fileID: 114369235803643934, guid: 2b245893af3ac4f1f8e7406b87617733,
+    - target: {fileID: 114396449369774266, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1758822038}
-    - target: {fileID: 224338769193115184, guid: 2b245893af3ac4f1f8e7406b87617733,
+    - target: {fileID: 114295607034705970, guid: 2b245893af3ac4f1f8e7406b87617733,
         type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 81.80005
-      objectReference: {fileID: 0}
-    - target: {fileID: 224338769193115184, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -43.80005
-      objectReference: {fileID: 0}
-    - target: {fileID: 224720413593176580, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 57.909912
-      objectReference: {fileID: 0}
-    - target: {fileID: 1664553962036464, guid: 2b245893af3ac4f1f8e7406b87617733, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421896520567992, guid: 2b245893af3ac4f1f8e7406b87617733,
-        type: 2}
-      propertyPath: canvasGroup
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1758822038}
+    - target: {fileID: 114077529340857612, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 405827460}
+    - target: {fileID: 114077529340857612, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 405827460}
+    - target: {fileID: 114147870252363964, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1758822038}
+    - target: {fileID: 114845800884663932, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693426360}
+    - target: {fileID: 114441701439394430, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 405827460}
+    - target: {fileID: 114774341206010768, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1758822038}
+    - target: {fileID: 114547640035785220, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 405827460}
+    - target: {fileID: 114547640035785220, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 405827460}
+    - target: {fileID: 114458137084373718, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1758822038}
+    - target: {fileID: 114769853351188906, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1758822038}
+    - target: {fileID: 114973112975695472, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693426360}
+    - target: {fileID: 114397698437379242, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 405827460}
+    - target: {fileID: 114454073968775366, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693426360}
+    - target: {fileID: 114187141929699048, guid: 2b245893af3ac4f1f8e7406b87617733,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartFullLevel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b245893af3ac4f1f8e7406b87617733, type: 2}
@@ -3460,6 +3426,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -3625,6 +3592,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -3698,6 +3666,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -3910,6 +3879,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

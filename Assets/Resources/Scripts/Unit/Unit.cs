@@ -336,7 +336,7 @@ public class Unit : MonoBehaviour
             GameplayController.instance.SpawnNextEnemy();
         }
         else{
-            GameplayController.instance.Invoke("RestartLevel",1f);
+            GameplayController.instance.Invoke("GameOver",1f);
         }
 
     }

@@ -14,6 +14,8 @@ public class GameDataController : MonoBehaviour {
     public float preEntranceTime;
     public float postEntranceTime;
     public float entranceSpeed;
+    public int highestEnemyIndexReached = 0;
+
 
 
     public bool customEntrance = false;
